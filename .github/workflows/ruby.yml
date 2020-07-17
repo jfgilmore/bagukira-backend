@@ -48,9 +48,9 @@ jobs:
       postgres:
         image: postgres:12.3-alpine
         env:
-          POSTGRES_USER: bagukira_backend_test
-          POSTGRES_DB: bagukira_backend_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: bagukira
+          POSTGRES_DB: bagukira_test
+          POSTGRES_PASSWORD: postgres
         ports:
         - 5432:tcp
         # needed because the postgres container does not provide a healthcheck
@@ -74,12 +74,12 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      - name: Setup test PostgreSQL database
+      - name: Setup test database
         env:
           RAILS_ENV: test
           POSTGRES_HOST: localhost
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
-          POSTGRES_USER: bagukira_backend_test
+          POSTGRES_USER: bagukira
         run: |
           bin/rails db:setup
           bin/rails db:migrate
