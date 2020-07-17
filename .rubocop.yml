@@ -11,3 +11,8 @@ Rails:
 
 AllCops:
   NewCops: disable
+  TargetRubyVersion: 2.7.1
+
+RSpec/ImplicitExpect:
+  Enabled: false
+  AutoCorrect: false
