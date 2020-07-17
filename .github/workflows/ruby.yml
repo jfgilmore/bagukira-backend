@@ -50,7 +50,7 @@ jobs:
         env:
           POSTGRES_USER: bagukira_test
           POSTGRES_DB: bagukira_backend_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: postgres
         ports:
         - 5432:5432
         # needed because the postgres container does not provide a healthcheck
