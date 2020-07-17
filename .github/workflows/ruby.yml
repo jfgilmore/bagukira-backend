@@ -79,6 +79,7 @@ jobs:
           RAILS_ENV: test
           PGHOST: localhost
           PGUSER: bagukira_test
+          PGPASSWORD: postgres
         run: |
           bin/rails db:setup
 
