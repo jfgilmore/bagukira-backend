@@ -12,20 +12,20 @@
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Lint/InterpolationCheck:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.
 Lint/UnusedBlockArgument:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -39,17 +39,17 @@ RSpec/HookArgument:
 # SupportedStyles: slashes, arguments
 Rails/FilePath:
   Exclude:
-    - 'config/environments/development.rb'
-    - 'spec/rails_helper.rb'
+    - "config/environments/development.rb"
+    - "spec/rails_helper.rb"
 
 # Offense count: 3
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+    - "spec/**/*"
+    - "test/**/*"
+    - "app/mailers/application_mailer.rb"
+    - "app/models/application_record.rb"
+    - "config/application.rb"
 
 # Offense count: 31
 # Cop supports --auto-correct.
@@ -64,9 +64,9 @@ Style/FrozenStringLiteralComment:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'config/application.rb'
-    - 'config/spring.rb'
-    - 'spec/rails_helper.rb'
+    - "config/application.rb"
+    - "config/spring.rb"
+    - "spec/rails_helper.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.

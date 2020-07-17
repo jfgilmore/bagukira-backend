@@ -6,4 +6,8 @@ require:
   - rubocop-performance
 
 Rails:
+  Enabled: true
   StyleGuideBaseURL: https://rails.rubystyle.guide
+
+AllCops:
+  NewCops: disable
