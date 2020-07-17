@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres: 12.3
+        image: postgres:12.3-alpine
         env:
           POSTGRES_USER: bagukira_backend_test
           POSTGRES_DB: bagukira_backend_test
