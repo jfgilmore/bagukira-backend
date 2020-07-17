@@ -50,4 +50,4 @@ gem 'rubocop-performance', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
-gem "bundler-audit", "~> 0.7.0"
+gem 'bundler-audit', '~> 0.7.0'
