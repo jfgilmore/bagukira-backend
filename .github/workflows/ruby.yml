@@ -43,7 +43,6 @@ jobs:
 
   tests:
     name: Tests
-    vmjob:
       runs-on: ubuntu-latest
       services:
         postgres:
