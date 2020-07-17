@@ -46,13 +46,13 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12.3-alpine
+        image: postgres:11-alpine
         env:
-          POSTGRES_USER: bagukira
-          POSTGRES_DB: bagukira_test
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: bagukira_test
+          POSTGRES_DB: bagukira_backend_test
+          POSTGRES_PASSWORD: ""
         ports:
-        - 5432/tcp
+        - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
@@ -77,12 +77,10 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
-          POSTGRES_USER: bagukira
+          PGHOST: localhost
+          PGUSER: bagukira
         run: |
           bin/rails db:setup
-          bin/rails db:migrate
 
       - name: Run tests
         run: bin/rspec
