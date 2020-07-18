@@ -1,0 +1,16 @@
+{
+  "title": "Users",
+  "type": "object",
+  "required": ["users"],
+  "properties": [
+    {
+      "type": "object",
+      "required": ["id", "email"],
+      "properties": {
+        "id": { "type": "integer" },
+        "email": { "type": "string" },
+        "password": { "type": "string" }
+      }
+    }
+  ]
+}

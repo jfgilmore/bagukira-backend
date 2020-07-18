@@ -16,3 +16,6 @@ AllCops:
 RSpec/ImplicitExpect:
   Enabled: false
   AutoCorrect: false
+
+Metrics/BlockLength:
+  Enabled: false
