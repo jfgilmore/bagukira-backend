@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :unit do
-    name { 'Test Project' }
+    sequence :name do |n|
+      "Test Project No.#{n}"
+    end
     unit_type { 0 }
     user { create(:user) }
 
