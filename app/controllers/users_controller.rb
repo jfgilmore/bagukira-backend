@@ -27,7 +27,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete; end
+  def delete
+    render json: {}, status: :no_content if @user.destroy
+  end
 
   private
 
