@@ -3,8 +3,8 @@ FactoryBot.define do
     sequence :name do |n|
       "Test Project No.#{n}"
     end
-    unit_type { 0 }
-    user { create(:user) }
+    unit_type { :project }
+    user_id { create(:user).id }
 
     trait :invalid do
       name { nil }

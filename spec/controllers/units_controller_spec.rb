@@ -1,28 +1,38 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe UnitsController, type: :controller do
-#   describe 'GET #index' do
-#     before(:example) do
-#       @first_unit = create(:unit)
-#       @last_unit = create(:unit)
-#       get :index
-#       @json_response = JSON.parse(response.body)
-#     end
+RSpec.describe UnitsController, type: :controller do
+  it { should use_before_action(:set_unit) }
 
-#     it 'JSON response contains the correct number of entries' do
-#       expect(@json_response['units'].count).to eq(2)
-#     end
+  describe 'POST #create' do
+    context 'when unit has invalid attributes' do
+      before do
+        unit_params = attributes_for(:unit, :invalid)
+        post :create, params: { unit: unit_params }
+        @json_response = JSON.parse(response.body)
+      end
 
-#     it 'JSON response body contains the expected attributes' do
-#       expect(@json_response['units']).to include({
-#                                                    id: @first_unit.id,
-#                                                    name: @first_unit.name,
-#                                                    user: @first_unit.user
-#                                                  })
+      it 'returns the correct number of errors' do
+        expect(@json_response['errors'].count).to eq(2)
+      end
 
-#       it { should respond_with(:success) }
-#     end
-#   end
+      it 'errors contains the correct message' do
+        expect(@json_response['errors'][0]).to eq("Name can't be blank")
+      end
+
+      it { should respond_with(:unprocessable_entity) }
+    end
+  end
+
+  describe 'PUT #update' do
+    before(:each) do
+      unit = create(:unit)
+      unit_params = attributes_for(:unit, :invalid)
+      put :update, params: { unit: unit_params, id: unit.id }
+    end
+
+    it { should respond_with(:internal_server_error) }
+  end
+end
 
 #   describe 'GET #show' do
 #     before do
