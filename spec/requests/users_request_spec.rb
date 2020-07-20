@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   describe 'GET #index' do
-    before(:example) do
-      @first_user = create(:user)
-      @last_user = create(:user)
+    before(:each) do
+      create_list(:user, 2)
       get '/users'
       @json_response = JSON.parse(response.body)
     end
@@ -17,21 +16,21 @@ RSpec.describe 'Users', type: :request do
 
     it 'JSON response body contains the expected attributes' do
       expect(@json_response['users'][0]).to include({
-                                                      'id' => @first_user.id,
-                                                      'email' => @first_user.email
+                                                      'id' => User.first.id,
+                                                      'email' => User.first.email
                                                     })
     end
   end
 
   describe 'GET #show' do
     before(:each) do
-      @user = create(:user)
-      get '/users', params: { id: @user.id }
+      create(:user)
+      get '/users', params: { id: User.last.id }
       @json_response = JSON.parse(response.body)
     end
 
     it 'returns http success' do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it 'returns just one User' do
@@ -39,7 +38,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'JSON response contains all desired attributes' do
-      expect(@json_response['users'][0]).to include({ 'id' => @user.id, 'email' => @user.email })
+      expect(@json_response['users'][0]).to include({ 'id' => User.last.id, 'email' => User.last.email })
     end
   end
 
@@ -65,9 +64,9 @@ RSpec.describe 'Users', type: :request do
     before(:each) do
       # Arrange
       user = create(:user)
-      @user_params = attributes_for(:user)
+      user_params = attributes_for(:user)
       # Act
-      put "/users/#{user.id}", params: { user: @user_params }
+      put "/users/#{user.id}", params: { user: user_params }
     end
 
     it { expect(response).to have_http_status(:no_content) }
@@ -77,10 +76,11 @@ RSpec.describe 'Users', type: :request do
     before(:each) do
       # Arrange
       user = create(:user)
-      @user_params = attributes_for(:user)
+      user_params = attributes_for(:user)
       # Act
-      put "/users/#{user.id}", params: { user: @user_params }
+      put "/users/#{user.id}", params: { user: user_params }
     end
+
     it { expect(response).to have_http_status(:success) }
   end
 

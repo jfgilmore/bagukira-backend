@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Units', type: :request do
   describe 'GET #index' do
     before(:each) do
-      @first_unit = create(:unit)
-      @last_unit = create(:unit)
+      create_list(:unit, 2)
       get '/units'
       @json_response = JSON.parse(response.body)
     end
@@ -17,18 +16,16 @@ RSpec.describe 'Units', type: :request do
 
     it 'JSON response body contains the expected attributes' do
       expect(@json_response['units'][0]).to include({
-                                                      'id' => @first_unit.id,
-                                                      'name' => @first_unit.name,
-                                                      'user_id' => @first_unit.user_id,
-                                                      'unit_type' => @first_unit.unit_type
+                                                      'id' => Unit.first.id, 'name' => Unit.first.name,
+                                                      'user_id' => Unit.first.user_id, 'unit_type' => Unit.first.unit_type
                                                     })
     end
   end
 
   describe 'GET #show' do
     before(:each) do
-      @unit = create(:unit)
-      get '/units', params: { id: @unit.id }
+      create(:unit)
+      get '/units', params: { id: Unit.last.id }
       @json_response = JSON.parse(response.body)
     end
 
@@ -41,7 +38,8 @@ RSpec.describe 'Units', type: :request do
     end
 
     it 'JSON response contains all desired attributes' do
-      expect(@json_response['units'][0]).to include({ 'id' => @unit.id, 'name' => @unit.name })
+      expect(@json_response['units'][0]).to include({ 'id' => Unit.last.id, 'name' => Unit.last.name,
+                                                      'user_id' => Unit.last.user_id, 'unit_type' => Unit.last.unit_type })
     end
   end
 
@@ -79,9 +77,9 @@ RSpec.describe 'Units', type: :request do
     before(:each) do
       # Arrange
       unit = create(:unit)
-      @unit_params = attributes_for(:unit)
+      unit_params = attributes_for(:unit)
       # Act
-      put "/units/#{unit.id}", params: { unit: @unit_params }
+      put "/units/#{unit.id}", params: { unit: unit_params }
     end
 
     it { expect(response).to have_http_status(:success) }
