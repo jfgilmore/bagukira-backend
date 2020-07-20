@@ -49,5 +49,5 @@ Rails.application.configure do
   config.allowed_cors_origins = %w[http://localhost:3000]
 
   # Disabling migration errors in test for GitHub Actions CI tests
-  config.active_record.migration_error = false
+  config.active_record.migration_error = true
 end
