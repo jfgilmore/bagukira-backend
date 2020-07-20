@@ -13,7 +13,11 @@ class UnitsController < ApplicationController
   def create
     unit = Unit.new(unit_params)
     if unit.save
+<<<<<<< HEAD
       render json: { units: unit }, status: :created
+=======
+      render json: unit, status: 200
+>>>>>>> parent of dee36da... Created User request tests for happy paths, all passing. Created UserController tests for sad paths, all passing.  All private methods covered, created rescue from record not found in ApplicationController.
     else
       render json: { errors: unit.errors.full_messages }, status: :unprocessable_entity
     end
@@ -34,7 +38,11 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
+<<<<<<< HEAD
     params.require(:unit).permit(:name, :user_id, :unit_type)
+=======
+    params.require(:unit).permit(:email)
+>>>>>>> parent of dee36da... Created User request tests for happy paths, all passing. Created UserController tests for sad paths, all passing.  All private methods covered, created rescue from record not found in ApplicationController.
   end
 
   def set_unit
