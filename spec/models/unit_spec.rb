@@ -10,14 +10,8 @@ RSpec.describe Unit, type: :model do
 
     it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(3) }
-<<<<<<< HEAD
     it { should validate_presence_of(:unit_type) }
     it { should validate_presence_of(:user_id) }
-=======
-
-    it { should validate_presence_of(:unit_type) }
-    it { should validate_presence_of(:user) }
->>>>>>> parent of dee36da... Created User request tests for happy paths, all passing. Created UserController tests for sad paths, all passing.  All private methods covered, created rescue from record not found in ApplicationController.
   end
 
   describe 'associations' do
