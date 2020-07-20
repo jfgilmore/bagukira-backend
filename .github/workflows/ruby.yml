@@ -72,7 +72,7 @@ jobs:
       - name: Install gems
         run: |
           bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          bundle install --update --jobs 4 --retry 3
 
       - name: Setup test database
         env:
@@ -80,6 +80,7 @@ jobs:
           PGHOST: localhost
           PGUSER: bagukira_test
           PGPASSWORD: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           bin/rails db:setup
 
