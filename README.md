@@ -1,7 +1,7 @@
 # README
 
-![Verification](https://github.com/jfgilmore/bagukira-backend/workflows/Verification/badge.svg?branch=master&event=status)
-![Heroku](http://heroku-badge.herokuapp.com/?app=bagukira&root=index.html)
+![Verification](https://github.com/jfgilmore/bagukira-backend/workflows/Verification/badge.svg?branch=master)
+![Heroku](http://heroku-badge.herokuapp.com/?app=bagukira&root=404.html)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
