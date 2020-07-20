@@ -82,7 +82,6 @@ jobs:
           PGPASSWORD: postgres
         run: |
           bin/rails db:setup
-          bin/rails db:migrate
 
       - name: Run tests
         run: bin/rspec
