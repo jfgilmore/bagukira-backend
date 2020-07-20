@@ -80,7 +80,6 @@ jobs:
           PGHOST: localhost
           PGUSER: bagukira_test
           PGPASSWORD: postgres
-          PGPORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           bin/rails db:setup
 
