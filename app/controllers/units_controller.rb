@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     render json: {}, status: :no_content if @unit.destroy
   end
 
