@@ -8,15 +8,16 @@ RSpec.describe UnitsController, type: :controller do
       before(:each) do
         unit_params = attributes_for(:unit, :invalid)
         post :create, params: { unit: unit_params }
-        @json_response = JSON.parse(response.body)
       end
 
+      let(:json_response) { JSON.parse(response.body) }
+
       it 'returns the correct number of errors' do
-        expect(@json_response['errors'].count).to eq(2)
+        expect(json_response['errors'].count).to eq(2)
       end
 
       it 'errors contains the correct message' do
-        expect(@json_response['errors'][0]).to eq("Name can't be blank")
+        expect(json_response['errors'][0]).to eq("Name can't be blank")
       end
 
       it { should respond_with(:unprocessable_entity) }

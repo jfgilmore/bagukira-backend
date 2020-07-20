@@ -5,17 +5,18 @@ RSpec.describe UsersController, type: :controller do
   describe 'POST #create' do
     context 'when user has invalid attributes' do
       before(:each) do
-        @user_params = attributes_for(:user, :invalid)
-        post :create, params: { user: @user_params }
-        @json_response = JSON.parse(response.body)
+        user_params = attributes_for(:user, :invalid)
+        post :create, params: { user: user_params }
       end
 
+      let(:json_response) { JSON.parse(response.body) }
+
       it 'returns the correct number of errors' do
-        expect(@json_response['errors'].count).to eq(1)
+        expect(json_response['errors'].count).to eq(1)
       end
 
       it 'errors contains the correct message' do
-        expect(@json_response['errors'][0]).to eq('Email is invalid')
+        expect(json_response['errors'][0]).to eq('Email is invalid')
       end
 
       it { should respond_with(:unprocessable_entity) }
@@ -25,8 +26,8 @@ RSpec.describe UsersController, type: :controller do
   describe 'PUT #update' do
     before(:each) do
       user = create(:user)
-      @user_params = attributes_for(:user, :invalid)
-      put :update, params: { user: @user_params, id: user.id }
+      user_params = attributes_for(:user, :invalid)
+      put :update, params: { user: user_params, id: user.id }
     end
 
     it { should respond_with(:internal_server_error) }

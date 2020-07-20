@@ -14,7 +14,7 @@ RSpec.describe Unit, type: :model do
     it { should validate_presence_of(:user_id) }
   end
 
-  context 'associations' do
+  describe 'associations' do
     it { should belong_to(:user) }
   end
 end

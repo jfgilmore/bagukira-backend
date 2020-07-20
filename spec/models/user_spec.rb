@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
   end
 
-  context 'associations' do
+  describe 'associations' do
     it { should have_many(:units) }
   end
 end

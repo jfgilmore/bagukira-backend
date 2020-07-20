@@ -5,20 +5,21 @@ RSpec.describe 'Users', type: :request do
     before(:each) do
       create_list(:user, 2)
       get '/users'
-      @json_response = JSON.parse(response.body)
     end
+
+    let(:json_response) { JSON.parse(response.body) }
 
     it { expect(response).to have_http_status(:success) }
 
     it 'JSON response contains the correct number of entries' do
-      expect(@json_response['users'].count).to eq(2)
+      expect(json_response['users'].count).to eq(2)
     end
 
     it 'JSON response body contains the expected attributes' do
-      expect(@json_response['users'][0]).to include({
-                                                      'id' => User.first.id,
-                                                      'email' => User.first.email
-                                                    })
+      expect(json_response['users'][0]).to include({
+                                                     'id' => User.first.id,
+                                                     'email' => User.first.email
+                                                   })
     end
   end
 
@@ -26,36 +27,37 @@ RSpec.describe 'Users', type: :request do
     before(:each) do
       create(:user)
       get '/users', params: { id: User.last.id }
-      @json_response = JSON.parse(response.body)
     end
+
+    let(:json_response) { JSON.parse(response.body) }
 
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
 
     it 'returns just one User' do
-      expect(@json_response['users'].count).to eq(1)
+      expect(json_response['users'].count).to eq(1)
     end
 
     it 'JSON response contains all desired attributes' do
-      expect(@json_response['users'][0]).to include({ 'id' => User.last.id, 'email' => User.last.email })
+      expect(json_response['users'][0]).to include({ 'id' => User.last.id, 'email' => User.last.email })
     end
   end
 
   describe 'POST #create' do
     context 'when user has valid attributes' do
+      let(:user_params) { attributes_for(:user) }
+
       before(:each) do
         # Arrange
-        @user_params = attributes_for(:user)
         # Act
-        post '/users', params: { user: @user_params }
-        @json_response = JSON.parse(response.body)
+        post '/users', params: { user: user_params }
       end
 
       it { expect(response).to have_http_status(:created) }
 
       it 'saves the user to the database' do
-        expect(User.last.email).to eq(@user_params[:email])
+        expect(User.last.email).to eq(user_params[:email])
       end
     end
   end
@@ -85,9 +87,10 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'DELETE #destroy' do
+    let(:user_count) { User.count }
+
     before(:each) do
       # Arrange
-      @user_count = User.count
       user = create(:user)
       # Act
       delete "/users/#{user.id}"
@@ -96,7 +99,7 @@ RSpec.describe 'Users', type: :request do
     it { expect(response).to have_http_status(:no_content) }
 
     it 'removes the entry from the database' do
-      expect(@user_count).to eq(User.count)
+      expect(user_count).to eq(User.count)
     end
   end
 end
