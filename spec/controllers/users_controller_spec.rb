@@ -1,21 +1,6 @@
 require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
-  describe 'private methods' do
-    # it { should filter_param(:password) }
-    it { should use_before_action(:set_user) }
-    it { should rescue_from(ActiveRecord::RecordNotFound).with(:handle_not_found) }
-  end
-
-  describe 'GET #index' do
-    before(:example) do
-      get :index
-      @json_response = JSON.parse(response.body)
-    end
-
-    it 'JSON response contains the correct number of entries' do
-      expect(@json_response['users'].count).to eq(0)
-    end
-  end
+  it { should use_before_action(:set_user) }
 
   describe 'POST #create' do
     context 'when user has invalid attributes' do
