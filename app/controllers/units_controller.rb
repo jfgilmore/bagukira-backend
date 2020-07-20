@@ -13,7 +13,7 @@ class UnitsController < ApplicationController
   def create
     unit = Unit.new(unit_params)
     if unit.save
-      render json: unit, status: 200
+      render json: unit, status: 201
     else
       render status: 500
     end
@@ -34,7 +34,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:email)
+    params.require(:unit).permit(:name, :user, :unit_type)
   end
 
   def set_unit
