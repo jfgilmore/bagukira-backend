@@ -50,4 +50,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.allowed_cors_origins = %w[http://localhost:3000]
+  config.pguser = 'bagukira_test'
+  config.pgpassword = 'postgres'
 end
