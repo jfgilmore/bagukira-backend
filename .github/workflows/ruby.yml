@@ -4,13 +4,6 @@
 # documentation.
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
-env:
-  RUBY_VERSION: 2.7.1
-  RAILS_ENV: test
-  PGHOST: localhost
-  PGUSER: bagukira_backend
-  RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-
 name: Verification
 on:
   push:
@@ -22,6 +15,10 @@ jobs:
   linters:
     name: Linters
     runs-on: ubuntu-latest
+    env:
+      RUBY_VERSION: 2.7.1
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -55,6 +52,12 @@ jobs:
   tests:
     name: Rspec Tests & Test Coverage
     runs-on: ubuntu-latest
+    env:
+      RUBY_VERSION: 2.7.1
+      RAILS_ENV: test
+      PGHOST: localhost
+      PGUSER: bagukira_backend
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     services:
       postgres:
         image: postgres:11
@@ -70,9 +73,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-
-      # - name: Setup Postgres
-      #   run: sudo apt-get -yqq install libpq-dev
 
       - name: Ruby gem cache
         uses: actions/cache@v1
