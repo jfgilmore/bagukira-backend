@@ -4,6 +4,9 @@
 # documentation.
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+env:
+  RUBY_VERSION: 2.7.1
+  RAILS_MASTER_KEY: ${ { secrets.RAILS_MASTER_KEY } }
 
 name: Verification
 on:
@@ -48,9 +51,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: bagukira_test
+          POSTGRES_USER: ${ { secrets.PGUSER } }
+          POSTGRES_PASSWORD: ${ { secrets.PGPASSWORD } }
           POSTGRES_DB: bagukira_backend_test
-          POSTGRES_PASSWORD: postgres
         ports:
         - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -78,8 +81,8 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: bagukira_test
-          PGPASSWORD: postgres
+          PGUSER: ${ { secrets.PGUSER } }
+          PGPASSWORD: ${ { secrets.PGPASSWORD } }
         run: |
           bin/rails db:setup
 
