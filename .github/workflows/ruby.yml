@@ -57,14 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12.3
+        image: postgres:11
         ports:
         - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Checkout code
@@ -93,7 +89,9 @@ jobs:
 
       - name: Setup test database
         run: |
-          bin/rails db:setup RAILS_ENV=${{ env.RAILS_ENV }}
+          RAILS_ENV=${{ env.RAILS_ENV }}
+          bin/rails db:create
+          bin/rails db:migrate
 
       - name: Run tests
         run: bin/rspec
