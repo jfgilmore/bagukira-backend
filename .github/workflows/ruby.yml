@@ -9,9 +9,6 @@ env:
   RAILS_ENV: test
   PGHOST: localhost
   PGUSER: bagukira_backend
-  POSTGRES_USER: bagukira_backend
-  POSTGRES_DB: bagukira_backend_test
-  POSTGRES_PASSWORD: ""
   RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
 name: Verification
@@ -60,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12.3-alpine@SHA256:94ed64a6179048190695c86ec707cc25d016056ce10fc9d229267d9a8f1dcf41
+        image: postgres:12.3
         ports:
         - 5432:5432
         options: >-
@@ -78,8 +75,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Setup Postgres
-        run: sudo apt-get -yqq install libpq-dev
+      # - name: Setup Postgres
+      #   run: sudo apt-get -yqq install libpq-dev
 
       - name: Ruby gem cache
         uses: actions/cache@v1
