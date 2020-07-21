@@ -29,11 +29,12 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0'
   gem 'prettier'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
 end
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 group :development do
