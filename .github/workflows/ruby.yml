@@ -55,12 +55,13 @@ jobs:
     env:
       RUBY_VERSION: 2.7.1
       RAILS_ENV: test
-      PGHOST: localhost
-      PGUSER: bagukira_backend
       RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     services:
       postgres:
         image: postgres:11
+        env:
+          PGHOST: localhost
+          PGUSER: bagukira_backend
         ports:
         - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
