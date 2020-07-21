@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12.3-alpine
+        image: postgres:12.3-alpine@SHA256:94ed64a6179048190695c86ec707cc25d016056ce10fc9d229267d9a8f1dcf41
         ports:
         - 5432:5432
         options: >-
