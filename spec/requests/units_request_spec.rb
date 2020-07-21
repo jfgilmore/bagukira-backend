@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-<<<<<<< HEAD
 RSpec.describe 'Units', type: :request do
   describe 'GET #index' do
     before(:each) do
@@ -106,8 +105,4 @@ RSpec.describe 'Units', type: :request do
       expect(unit_count).to eq(Unit.count)
     end
   end
-=======
-RSpec.describe "Units", type: :request do
-
->>>>>>> parent of dee36da... Created User request tests for happy paths, all passing. Created UserController tests for sad paths, all passing.  All private methods covered, created rescue from record not found in ApplicationController.
 end

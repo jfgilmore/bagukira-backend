@@ -46,8 +46,12 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # CORS list
   config.allowed_cors_origins = %w[http://localhost:3000]
+  config.PGUSER = 'bagukira_test'
+  config.PGPASSWORD = 'postgres'
 
   # Disabling migration errors in test for GitHub Actions CI tests
-  config.active_record.migration_error = false
+  config.active_record.migration_error = true
 end
