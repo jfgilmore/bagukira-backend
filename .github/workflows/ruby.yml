@@ -6,15 +6,11 @@
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
 
 name: Verification
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-# env:
-#   RAILS_MASTER_KEY: ${ { secrets.RAILS_MASTER_KEY } }
 
 jobs:
   linters:
@@ -23,7 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Ruby gem cache
@@ -43,6 +38,7 @@ jobs:
       - name: Run security checks
         run: |
           bin/bundler-audit --update
+
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -61,7 +57,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Ruby gem cache
@@ -79,6 +74,7 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: localhost
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
           PGUSER: bagukira_test
           PGPASSWORD: postgres
         run: |
