@@ -4,21 +4,25 @@
 # documentation.
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
 name: Verification
-env:
-  RUBY_VERSION: 2.7.1
-  PGUSER: ${ { secrets.PGUSER } }
-  PGPASSWORD: ${ { secrets.PGPASSWORD } }
-  RAILS_MASTER_KEY: ${ { secrets.RAILS_MASTER_KEY } }
-  POSTGRES_DB: bagukira_backend_test
-  RAILS_ENV: test
-  PGHOST: localhost
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
+env:
+  RUBY_VERSION: 2.7.1
+  RAILS_MASTER_KEY: ${ { secrets.RAILS_MASTER_KEY } }
+  POSTGRES_USER: ${ { secrets.PGUSER } }
+  POSTGRES_PASSWORD: ${ { secrets.PGPASSWORD } }
+  POSTGRES_DB: bagukira_backend_test
+  RAILS_ENV: test
+  PGHOST: 127.0.0.1
+  PGUSER: ${ { secrets.PGUSER } }
+  PGPASSWORD: ${ { secrets.PGPASSWORD } }
 
 jobs:
   linters:
@@ -30,9 +34,6 @@ jobs:
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${ { env.RUBY_VERSION } }
-
       - name: Ruby gem cache
         uses: actions/cache@v1
         with:
@@ -40,16 +41,14 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-
       - name: Install gems
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      - name: Run Rubocop
+      - name: Run linters
         run: |
           bin/rubocop --parallel
-
       - name: Run security checks
         run: |
           bin/bundler-audit --update
@@ -64,15 +63,13 @@ jobs:
         - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${ { env.RUBY_VERSION } }
-
       - name: Ruby gem cache
         uses: actions/cache@v1
         with:
@@ -80,7 +77,6 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-
       - name: Install gems
         run: |
           bundle config path vendor/bundle
@@ -90,13 +86,5 @@ jobs:
         run: |
           bin/rails db:setup
 
-      - name: Run RSpec tests
+      - name: Run tests
         run: bin/rspec
-
-      - name: Upload SimpleCov Report
-        uses: actions/upload-artifact@master
-        if: always()
-        with:
-          # Name of the Downloaded file
-          name: simplecov-report
-          path: coverage
