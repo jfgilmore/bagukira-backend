@@ -28,7 +28,7 @@ RSpec.describe TicketsController, type: :controller do
 
     context 'when id does exist' do
       before(:each) do
-        ticket = create(:ticket)
+        ticket = create(:new_ticket)
         get :show, params: { id: ticket.id }
       end
 
@@ -40,7 +40,7 @@ RSpec.describe TicketsController, type: :controller do
   describe 'POST #create' do
     context 'when ticket has invalid attributes' do
       before(:each) do
-        ticket_params = attributes_for(:ticket, :invalid)
+        ticket_params = attributes_for(:ticket, :invalid_opened_by)
         post :create, params: { ticket: ticket_params }
       end
 
@@ -60,8 +60,8 @@ RSpec.describe TicketsController, type: :controller do
 
   describe 'PUT #update' do
     before(:each) do
-      ticket = create(:ticket)
-      ticket_params = attributes_for(:ticket, :invalid)
+      ticket = create(:new_ticket)
+      ticket_params = attributes_for(:ticket, :invalid_subject)
       put :update, params: { ticket: ticket_params, id: ticket.id }
     end
 
