@@ -3,6 +3,40 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   it { should use_before_action(:set_user) }
 
+  describe 'GET #index' do
+    context 'has no entries' do
+      before(:each) do
+        get :index
+      end
+
+      it { should respond_with(:ok) }
+      it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+      it { expect(JSON.parse(response.body)).to eq({ 'users' => [] }) }
+    end
+  end
+
+  describe 'GET #show' do
+    context 'when id does not exist' do
+      before(:each) do
+        get :show, params: { id: -1 }
+      end
+
+      it { should respond_with(:not_found) }
+      it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+      it { expect(JSON.parse(response.body)).to eq({}) }
+    end
+
+    context 'when id does exist' do
+      before(:each) do
+        user = create(:user)
+        get :show, params: { id: user.id }
+      end
+
+      it { should respond_with(:ok) }
+      it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+    end
+  end
+
   describe 'POST #create' do
     context 'when user has invalid attributes' do
       before(:each) do
