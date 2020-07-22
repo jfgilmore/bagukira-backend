@@ -1,10 +1,12 @@
 FactoryBot.define do
   factory :ticket do
-    subject { "MyString" }
-    status { 1 }
-    opened_by { "MyString" }
-    closed_by { "MyString" }
-    description { "MyString" }
-    unit { "" }
+    sequence :subject do |n|
+     { "Bug Report #{n}" }
+    end
+    status { 0 }
+    opened_by { "Josh" }
+    closed_by { "Jake" }
+    description { "Something to do with CI." }
+    unit { create(:unit).id }
   end
 end
