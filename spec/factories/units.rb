@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :unit do
+  factory :unit, aliases: [:project, :team, :organisation] do
     sequence :name do |n|
       "Test Project No.#{n}"
     end
