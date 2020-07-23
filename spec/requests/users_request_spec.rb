@@ -49,8 +49,6 @@ RSpec.describe 'Users', type: :request do
       let(:user_params) { attributes_for(:user) }
 
       before(:each) do
-        # Arrange
-        # Act
         post '/users', params: { user: user_params }
       end
 
@@ -64,10 +62,8 @@ RSpec.describe 'Users', type: :request do
 
   describe 'PUT #update' do
     before(:each) do
-      # Arrange
       user = create(:user)
       user_params = attributes_for(:user)
-      # Act
       put "/users/#{user.id}", params: { user: user_params }
     end
 
@@ -76,14 +72,12 @@ RSpec.describe 'Users', type: :request do
 
   describe 'PATCH #update' do
     before(:each) do
-      # Arrange
       user = create(:user)
       user_params = attributes_for(:user)
-      # Act
-      put "/users/#{user.id}", params: { user: user_params }
+      patch "/users/#{user.id}", params: { user: user_params }
     end
 
-    it { expect(response).to have_http_status(:success) }
+    it { expect(response).to have_http_status(:no_content) }
   end
 
   describe 'DELETE #destroy' do
