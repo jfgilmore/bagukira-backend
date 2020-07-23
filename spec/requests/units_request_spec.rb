@@ -17,9 +17,9 @@ RSpec.describe 'Units', type: :request do
 
     it 'JSON response body contains the expected attributes' do
       expect(json_response['units'][0]).to include({
-                                                     'id' => Unit.first.id, 'name' => Unit.first.name,
-                                                     'user_id' => Unit.first.user_id,
-                                                     'unit_type' => Unit.first.unit_type
+                                                     'name' => Unit.first.name,
+                                                     'unit_type' => Unit.first.unit_type,
+                                                     'unit_hash' => Unit.first.unit_hash
                                                    })
     end
   end
@@ -27,7 +27,7 @@ RSpec.describe 'Units', type: :request do
   describe 'GET #show' do
     before(:each) do
       create(:unit)
-      get '/units', params: { id: Unit.last.id }
+      get '/units', params: { id: Unit.last.unit_hash }
     end
 
     let(:json_response) { JSON.parse(response.body) }
@@ -52,8 +52,6 @@ RSpec.describe 'Units', type: :request do
       let(:unit_params) { attributes_for(:unit) }
 
       before(:each) do
-        # Arrange
-        # Act
         post '/units', params: { unit: unit_params }
       end
 
@@ -67,11 +65,9 @@ RSpec.describe 'Units', type: :request do
 
   describe 'PUT #update' do
     before(:each) do
-      # Arrange
-      unit = create(:unit)
+      unit = create(:unit, :with_hash)
       unit_params = attributes_for(:unit)
-      # Act
-      put "/units/#{unit.id}", params: { unit: unit_params }
+      put "/units/#{unit.unit_hash}", params: { unit: unit_params }
     end
 
     it { expect(response).to have_http_status(:no_content) }
@@ -79,24 +75,20 @@ RSpec.describe 'Units', type: :request do
 
   describe 'PATCH #update' do
     before(:each) do
-      # Arrange
-      unit = create(:unit)
+      unit = create(:unit, :with_hash)
       unit_params = attributes_for(:unit)
-      # Act
-      put "/units/#{unit.id}", params: { unit: unit_params }
+      patch "/units/#{unit.unit_hash}", params: { unit: unit_params }
     end
 
-    it { expect(response).to have_http_status(:success) }
+    it { expect(response).to have_http_status(:no_content) }
   end
 
   describe 'DELETE #destroy' do
     let(:unit_count) { Unit.count }
 
     before(:each) do
-      # Arrange
-      unit = create(:unit)
-      # Act
-      delete "/units/#{unit.id}"
+      unit = create(:unit, :with_hash)
+      delete "/units/#{unit.unit_hash}"
     end
 
     it { expect(response).to have_http_status(:no_content) }

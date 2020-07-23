@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render status: :no_content
+      render json: {}, status: :no_content
     else
       render json: { errors: @user.errors.full_messages }, status: :internal_server_error
     end

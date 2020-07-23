@@ -4,7 +4,7 @@ RSpec.describe UnitsController, type: :controller do
   it { should use_before_action(:set_unit) }
 
   describe 'GET #index' do
-    context 'has no entries' do
+    context 'when has no entries' do
       before(:each) do
         get :index
       end
@@ -28,8 +28,8 @@ RSpec.describe UnitsController, type: :controller do
 
     context 'when id does exist' do
       before(:each) do
-        unit = create(:unit)
-        get :show, params: { id: unit.id }
+        unit = create(:unit, :with_hash)
+        get :show, params: { id: unit.unit_hash }
       end
 
       it { should respond_with(:ok) }
@@ -60,9 +60,19 @@ RSpec.describe UnitsController, type: :controller do
 
   describe 'PUT #update' do
     before(:each) do
-      unit = create(:unit)
+      unit = create(:unit, :with_hash)
       unit_params = attributes_for(:unit, :invalid)
-      put :update, params: { unit: unit_params, id: unit.id }
+      put :update, params: { unit: unit_params, id: unit.unit_hash }
+    end
+
+    it { should respond_with(:internal_server_error) }
+  end
+
+  describe 'PATCH #update' do
+    before(:each) do
+      unit = create(:unit, :with_hash)
+      unit_params = attributes_for(:unit, :invalid)
+      patch :update, params: { unit: unit_params, id: unit.unit_hash }
     end
 
     it { should respond_with(:internal_server_error) }

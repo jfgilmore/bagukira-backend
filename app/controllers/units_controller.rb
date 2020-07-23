@@ -13,6 +13,7 @@ class UnitsController < ApplicationController
   def create
     unit = Unit.new(unit_params)
     if unit.save
+      project_hash(unit)
       render json: { units: unit }, status: :created
     else
       render json: { errors: unit.errors.full_messages }, status: :unprocessable_entity
@@ -21,7 +22,7 @@ class UnitsController < ApplicationController
 
   def update
     if @unit.update(unit_params)
-      render status: :no_content
+      render json: {}, status: :no_content
     else
       render json: { errors: @unit.errors.full_messages }, status: :internal_server_error
     end
@@ -34,10 +35,16 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :user_id, :unit_type)
+    params.require(:unit).permit(:unit_hash, :name, :user_id, :unit_type)
   end
 
   def set_unit
-    @unit = Unit.find(params[:id])
+    @unit = Unit.find_by!(unit_hash: params[:id])
+  end
+
+  # create unit hashes for lookup by non users
+  def project_hash(unit)
+    hash = Digest::SHA256.hexdigest("#{unit.user_id}:#{unit.id}")
+    unit.update({ unit_hash: hash })
   end
 end

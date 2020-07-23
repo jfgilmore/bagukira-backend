@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
   it { should use_before_action(:set_user) }
 
   describe 'GET #index' do
-    context 'has no entries' do
+    context 'when has no entries' do
       before(:each) do
         get :index
       end
