@@ -3,12 +3,12 @@ FactoryBot.define do
     sequence :subject do |n|
       "Bug Report #{n}"
     end
-    status { 0 }
+    status { :open }
     opened_by { 'Josh' }
     description { 'Something to do with CI.' }
 
     trait :new_unit do
-      unit_id { create(:unit).id }
+      unit_id { create(:unit, :with_hash).unit_hash }
     end
 
     trait :closed do
@@ -23,7 +23,7 @@ FactoryBot.define do
     trait :invalid_opened_by do
       opened_by { nil }
     end
-  end
 
-  factory :new_ticket, traits: [:new_unit]
+    factory :new_ticket, traits: [:new_unit]
+  end
 end

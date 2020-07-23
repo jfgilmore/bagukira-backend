@@ -4,9 +4,20 @@ RSpec.describe TicketsController, type: :controller do
   it { should use_before_action(:set_ticket) }
 
   describe 'GET #index' do
-    context 'has no entries' do
+    context 'when there is no project' do
       before(:each) do
         get :index
+      end
+
+      it { should respond_with(:ok) }
+      it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+      it { expect(JSON.parse(response.body)).to eq({ 'tickets' => [] }) }
+    end
+
+    context 'when there are no tickets for the project' do
+      before(:each) do
+        unit = create(:unit, :with_hash)
+        get :index, params: { unit_hash: unit.unit_hash }
       end
 
       it { should respond_with(:ok) }
@@ -40,18 +51,18 @@ RSpec.describe TicketsController, type: :controller do
   describe 'POST #create' do
     context 'when ticket has invalid attributes' do
       before(:each) do
-        ticket_params = attributes_for(:ticket, :invalid_opened_by)
+        ticket_params = attributes_for(:new_ticket, :invalid_opened_by)
         post :create, params: { ticket: ticket_params }
       end
 
       let(:json_response) { JSON.parse(response.body) }
 
       it 'returns the correct number of errors' do
-        expect(json_response['errors'].count).to eq(2)
+        expect(json_response['errors'].count).to eq(1)
       end
 
       it 'errors contains the correct message' do
-        expect(json_response['errors'][0]).to eq("Subject can't be blank")
+        expect(json_response['errors'][0]).to eq("Opened by can't be blank")
       end
 
       it { should respond_with(:unprocessable_entity) }
@@ -61,7 +72,7 @@ RSpec.describe TicketsController, type: :controller do
   describe 'PUT #update' do
     before(:each) do
       ticket = create(:new_ticket)
-      ticket_params = attributes_for(:ticket, :invalid_subject)
+      ticket_params = attributes_for(:ticket, :invalid_subject, unit_hash: ticket.unit_id)
       put :update, params: { ticket: ticket_params, id: ticket.id }
     end
 

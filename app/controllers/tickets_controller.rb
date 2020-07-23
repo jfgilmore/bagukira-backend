@@ -11,7 +11,9 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket = Ticket.new(ticket_params)
+    unit = Unit.find_by(unit_hash: ticket_params[:unit_hash])
+    ticket = unit.tickets.new(ticket_params)
+    puts ticket_params
     if ticket.save
       render json: { tickets: ticket }, status: :created
     else
@@ -35,7 +37,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:subject, :status, :opened_by, :description, :unit_id, :closed_by)
+    params.require(:ticket).permit(:subject, :status, :opened_by, :description, :unit_hash, :closed_by)
   end
 
   def set_ticket
