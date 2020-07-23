@@ -29,3 +29,4 @@ spec/examples.txt
 
 # Ignore coverage report
 /coverage
+test_results.html
