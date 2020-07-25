@@ -16,21 +16,22 @@ ActiveRecord::Schema.define(version: 2020_07_21_064502) do
   enable_extension "plpgsql"
 
   create_table "tickets", force: :cascade do |t|
-    t.string "subject"
-    t.integer "status"
-    t.string "opened_by"
+    t.string "subject", null: false
+    t.integer "status", default: 1, null: false
+    t.string "opened_by", null: false
     t.string "closed_by"
-    t.string "description"
-    t.bigint "unit_id"
+    t.string "description", default: ""
+    t.string "unit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["unit_id"], name: "index_tickets_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
-    t.string "name"
-    t.integer "unit_type", default: 0
-    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.integer "unit_type", default: 0, null: false
+    t.integer "tickets_count"
+    t.string "unit_hash"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_units_on_user_id"
@@ -45,5 +46,4 @@ ActiveRecord::Schema.define(version: 2020_07_21_064502) do
   end
 
   add_foreign_key "units", "users"
-  add_foreign_key "tickets", "units"
 end

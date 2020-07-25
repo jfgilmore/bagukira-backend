@@ -4,9 +4,10 @@ RSpec.describe TicketsController, type: :controller do
   it { should use_before_action(:set_ticket) }
 
   describe 'GET #index' do
-    context 'when there is no project' do
+    context 'when there is no valid unit and no tickets' do
       before(:each) do
-        get :index
+        unit = create(:unit)
+        get :index, params: { ticket: { unit_id: unit.id } }
       end
 
       it { should respond_with(:ok) }
@@ -14,10 +15,10 @@ RSpec.describe TicketsController, type: :controller do
       it { expect(JSON.parse(response.body)).to eq({ 'tickets' => [] }) }
     end
 
-    context 'when there are no tickets for the project' do
+    context 'when the unit is present but there are no tickets' do
       before(:each) do
-        unit = create(:unit, :with_hash)
-        get :index, params: { unit_hash: unit.unit_hash }
+        unit = create(:unit)
+        get :index, params: { ticket: { unit_id: unit.unit_hash } }
       end
 
       it { should respond_with(:ok) }
@@ -39,7 +40,7 @@ RSpec.describe TicketsController, type: :controller do
 
     context 'when id does exist' do
       before(:each) do
-        ticket = create(:new_ticket)
+        ticket = create(:ticket)
         get :show, params: { id: ticket.id }
       end
 
@@ -51,7 +52,9 @@ RSpec.describe TicketsController, type: :controller do
   describe 'POST #create' do
     context 'when ticket has invalid attributes' do
       before(:each) do
-        ticket_params = attributes_for(:new_ticket, :invalid_opened_by)
+        # create(:unit)
+        ticket_params = attributes_for(:ticket, :invalid_opened_by)
+        # puts ticket_params
         post :create, params: { ticket: ticket_params }
       end
 
@@ -71,7 +74,7 @@ RSpec.describe TicketsController, type: :controller do
 
   describe 'PUT #update' do
     before(:each) do
-      ticket = create(:new_ticket)
+      ticket = create(:ticket)
       ticket_params = attributes_for(:ticket, :invalid_subject, unit_hash: ticket.unit_id)
       put :update, params: { ticket: ticket_params, id: ticket.id }
     end

@@ -6,7 +6,9 @@ RSpec.describe UnitsController, type: :controller do
   describe 'GET #index' do
     context 'when has no entries' do
       before(:each) do
-        get :index
+        create(:user)
+        unit = create(:unit)
+        get :index, params: { unit: { id: unit.unit_hash } }
       end
 
       it { should respond_with(:ok) }
@@ -28,7 +30,7 @@ RSpec.describe UnitsController, type: :controller do
 
     context 'when id does exist' do
       before(:each) do
-        unit = create(:unit, :with_hash)
+        unit = create(:unit)
         get :show, params: { id: unit.unit_hash }
       end
 
@@ -60,7 +62,7 @@ RSpec.describe UnitsController, type: :controller do
 
   describe 'PUT #update' do
     before(:each) do
-      unit = create(:unit, :with_hash)
+      unit = create(:unit)
       unit_params = attributes_for(:unit, :invalid)
       put :update, params: { unit: unit_params, id: unit.unit_hash }
     end
@@ -70,7 +72,7 @@ RSpec.describe UnitsController, type: :controller do
 
   describe 'PATCH #update' do
     before(:each) do
-      unit = create(:unit, :with_hash)
+      unit = create(:unit)
       unit_params = attributes_for(:unit, :invalid)
       patch :update, params: { unit: unit_params, id: unit.unit_hash }
     end

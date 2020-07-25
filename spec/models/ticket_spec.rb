@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
-  subject { build(:new_ticket) }
+  subject { build(:ticket) }
 
   describe 'validations' do
     it 'has valid factory' do
-      expect(build(:new_ticket)).to be_valid
+      expect(build(:ticket)).to be_valid
     end
 
     it { should validate_presence_of(:subject) }

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Units', type: :request do
   describe 'GET #index' do
     before(:each) do
-      create_list(:unit, 2)
+      @units = create_list(:unit, 2)
       get '/units'
     end
 
@@ -17,17 +17,17 @@ RSpec.describe 'Units', type: :request do
 
     it 'JSON response body contains the expected attributes' do
       expect(json_response['units'][0]).to include({
-                                                     'name' => Unit.first.name,
-                                                     'unit_type' => Unit.first.unit_type,
-                                                     'unit_hash' => Unit.first.unit_hash
+                                                     'name' => @units.first.name,
+                                                     'unit_type' => @units.first.unit_type,
+                                                     'unit_hash' => @units.first.unit_hash
                                                    })
     end
   end
 
   describe 'GET #show' do
     before(:each) do
-      create(:unit)
-      get '/units', params: { id: Unit.last.unit_hash }
+      unit = create(:unit)
+      get '/units', params: { id: unit.unit_hash }
     end
 
     let(:json_response) { JSON.parse(response.body) }
@@ -49,23 +49,24 @@ RSpec.describe 'Units', type: :request do
 
   describe 'POST #create' do
     context 'when unit has valid attributes' do
-      let(:unit_params) { attributes_for(:unit) }
-
       before(:each) do
-        post '/units', params: { unit: unit_params }
+        @unit_params = attributes_for(:unit)
+        puts @unit_params
+        # user = create(:user)
+        post '/units', params: { unit: @unit_params }
       end
 
       it { expect(response).to have_http_status(:created) }
 
       it 'saves the unit to the database' do
-        expect(Unit.last.name).to eq(unit_params[:name])
+        expect(Unit.last.name).to eq(@unit_params[:name])
       end
     end
   end
 
   describe 'PUT #update' do
     before(:each) do
-      unit = create(:unit, :with_hash)
+      unit = create(:unit)
       unit_params = attributes_for(:unit)
       put "/units/#{unit.unit_hash}", params: { unit: unit_params }
     end
@@ -75,7 +76,7 @@ RSpec.describe 'Units', type: :request do
 
   describe 'PATCH #update' do
     before(:each) do
-      unit = create(:unit, :with_hash)
+      unit = create(:unit)
       unit_params = attributes_for(:unit)
       patch "/units/#{unit.unit_hash}", params: { unit: unit_params }
     end
@@ -87,7 +88,7 @@ RSpec.describe 'Units', type: :request do
     let(:unit_count) { Unit.count }
 
     before(:each) do
-      unit = create(:unit, :with_hash)
+      unit = create(:unit)
       delete "/units/#{unit.unit_hash}"
     end
 

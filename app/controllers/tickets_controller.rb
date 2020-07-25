@@ -1,9 +1,15 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[show update destroy]
+  before_action :set_ticket, only: %i[index show create update destroy]
 
   def index
-    tickets = Ticket.all
-    render json: { tickets: tickets }, status: :ok
+    # puts @unit
+    tickets = @unit.tickets.all
+    # else
+    #   []
+    # # else
+    # #   Ticket.all
+    # end
+    render json: { tickets:  tickets }, status: :ok
   end
 
   def show
@@ -11,13 +17,13 @@ class TicketsController < ApplicationController
   end
 
   def create
-    unit = Unit.find_by(unit_hash: ticket_params[:unit_hash])
-    ticket = unit.tickets.new(ticket_params)
-    puts ticket_params
-    if ticket.save
-      render json: { tickets: ticket }, status: :created
+    @ticket = @unit.tickets.new(ticket_params)
+    # Ticket number, unique to unit(project)
+    @ticket.number = @unit.tickets.last
+    if @ticket.save
+      render json: { tickets: @ticket }, status: :created
     else
-      render json: { errors: ticket.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @ticket.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -37,10 +43,11 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:subject, :status, :opened_by, :description, :unit_hash, :closed_by)
+    params.require(:ticket).permit(:id, :subject, :status, :opened_by, :description, :unit, :unit_id, :closed_by)
   end
 
   def set_ticket
-    @ticket = Ticket.find(params[:id])
+    @unit = Unit.find(params[:unit_id])
+    @ticket = @unit.tickets.find(params[:id]) || Ticket.find(params[:id])
   end
 end

@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  validates :subject, :status, :unit_hash, :opened_by, presence: true
+  validates :subject, :status, :unit_id, :opened_by, presence: true
   enum status: { open: 1, in_progress: 2, closed: 3 }
   belongs_to :unit, primary_key: 'unit_hash', counter_cache: true
 

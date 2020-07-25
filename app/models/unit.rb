@@ -1,7 +1,7 @@
 class Unit < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
   validates :user_id, :unit_type, presence: true
-  # validates :unit_hash, presence: true, uniqueness: true, on: :update
+  validates :unit_hash, presence: true, on: :update
   enum unit_type: { project: 1, team: 2, organisation: 3 }
   belongs_to :user, counter_cache: true
   has_many :tickets, primary_key: 'unit_hash', dependent: :restrict_with_exception
