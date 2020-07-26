@@ -47,11 +47,12 @@ class UnitsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  # create unit hashes for lookup by non users
   def project_hash(unit)
+    # Get ticket postgres index
     query = 'SELECT MAX(id)  FROM units'
     new_unit_id = ActiveRecord::Base.connection.execute(query).values
-    puts new_unit_id
+
+    # Generate and store hash
     hash = Digest::SHA256.hexdigest("#{unit.user_id}:#{new_unit_id}")
     unit.update({ unit_hash: hash })
   end
