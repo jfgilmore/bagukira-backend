@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    users = User.all
+    users = User.order(email: :desc).all
     render json: { users: users }, status: :ok
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email) # , :password
   end
 
   def set_user
