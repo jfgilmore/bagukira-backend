@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
 
   def index
     units = @user.units # .order(status: :asc)
-    render json: { count: @user.units_count, units: units }, status: :ok
+    render json: { count: (@user.units_count || 0), units: units }, status: :ok
   end
 
   def show
