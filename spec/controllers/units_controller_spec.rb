@@ -39,26 +39,26 @@ RSpec.describe UnitsController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
-    context 'when unit has invalid attributes' do
-      before(:each) do
-        unit_params = attributes_for(:unit, :invalid)
-        post :create, params: { unit: unit_params }
-      end
+  # describe 'POST #create' do
+  #   context 'when unit has invalid attributes' do
+  #     before(:each) do
+  #       unit_params = attributes_for(:unit, :invalid)
+  #       post :create, params: { unit: unit_params }
+  #     end
 
-      let(:json_response) { JSON.parse(response.body) }
+  #     let(:json_response) { JSON.parse(response.body) }
 
-      # it 'returns the correct number of errors' do
-      #   expect(json_response['errors'].count).to eq(2)
-      # end
+  # it 'returns the correct number of errors' do
+  #   expect(json_response['errors'].count).to eq(2)
+  # end
 
-      # it 'errors contains the correct message' do
-      #   expect(json_response['errors'][0]).to eq("Name can't be blank")
-      # end
+  # it 'errors contains the correct message' do
+  #   expect(json_response['errors'][0]).to eq("Name can't be blank")
+  # end
 
-      # it { should respond_with(:unprocessable_entity) }
-    end
-  end
+  # it { should respond_with(:unprocessable_entity) }
+  #   end
+  # end
 
   describe 'PUT #update' do
     before(:each) do
