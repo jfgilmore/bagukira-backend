@@ -3,16 +3,12 @@ class UnitsController < ApplicationController
   before_action :set_user, only: %i[index create]
 
   def index
-    units = if params[:search]
-              @user.units.search(params).order(:at_time)
-            elsif params[:user]
-              @user.units
-            end
-    render json: { units: units }, status: :ok
+    units = @user.units # .order(status: :asc)
+    render json: { count: @user.units_count, units: units }, status: :ok
   end
 
   def show
-    render json: @unit, status: :ok
+    render json: { count: 1, units: @unit }, status: :ok
   end
 
   def create
@@ -40,26 +36,23 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :unit_hash, :user_id, :unit_type, :id)
-  end
-
-  def user_params
-    params.require(:user).permit(:id, :jwt)
+    params.require(:unit).permit(:name, :unit_hash, :user_id, :unit_type)
   end
 
   def set_unit
-    unit_id = params[:id] || unit_params[:id]
-    @unit = Unit.find_by!(unit_hash: unit_id)
+    @unit = Unit.find(params[:id])
   end
 
   def set_user
-    @user = User.find(user_params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # create unit hashes for lookup by non users
   def project_hash(unit)
-    p unit._read_attribute('id')
-    hash = Digest::SHA256.hexdigest("#{unit.user_id}:#{unit.id}")
+    query = 'SELECT MAX(id)  FROM units'
+    new_unit_id = ActiveRecord::Base.connection.execute(query).values
+    puts new_unit_id
+    hash = Digest::SHA256.hexdigest("#{unit.user_id}:#{new_unit_id}")
     unit.update({ unit_hash: hash })
   end
 end

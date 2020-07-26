@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
+    # Default ordered by email
     users = User.order(email: :desc).all
     render json: { users: users }, status: :ok
   end
