@@ -1,11 +1,20 @@
 class UnitsController < ApplicationController
-  before_action :authenticate_user, only: %i[index create update destroy]
-  before_action :set_unit, only: %i[show update destroy]
+  before_action :authenticate_user, only: %i[index invite create update destroy]
+  before_action :set_unit, only: %i[show invite update destroy]
   # before_action :set_user, only: %i[index create]
 
   def index
     units = current_user.units # .order(status: :asc)
     render json: { count: (current_user.units_count || 0), units: units }, status: :ok
+  end
+
+  # Sends email invites to an array of users
+  def invite
+    list = unit_params[:invite_list]
+    list.each do |address|
+      BaguMailMailer.with({ user: current_user, unit: @unit, email: address }).user_updated_mail.deliver_now
+    end
+    render json: {}, status: :no_content
   end
 
   def show
@@ -37,7 +46,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :unit_hash, :user_id, :unit_type)
+    params.require(:unit).permit(:name, :unit_hash, :user_id, :unit_type, invite_list: [])
   end
 
   def set_unit
