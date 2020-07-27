@@ -1,10 +1,11 @@
 class UnitsController < ApplicationController
+  before_action :authenticate_user, only: %i[index create update destroy]
   before_action :set_unit, only: %i[show update destroy]
-  before_action :set_user, only: %i[index create]
+  # before_action :set_user, only: %i[index create]
 
   def index
-    units = @user.units # .order(status: :asc)
-    render json: { count: (@user.units_count || 0), units: units }, status: :ok
+    units = current_user.units # .order(status: :asc)
+    render json: { count: (current_user.units_count || 0), units: units }, status: :ok
   end
 
   def show
@@ -12,7 +13,7 @@ class UnitsController < ApplicationController
   end
 
   def create
-    unit = @user.units.new(unit_params)
+    unit = current_user.units.new(unit_params)
     if unit.save
       project_hash(unit)
       render json: { units: unit }, status: :created
