@@ -10,17 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_083832) do
+ActiveRecord::Schema.define(version: 2020_07_27_004541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "units", force: :cascade do |t|
-    t.string "name"
-    t.integer "unit_type", default: 0
-    t.bigint "user_id", null: false
+  create_table "tickets", force: :cascade do |t|
+    t.string "subject", null: false
+    t.integer "status", default: 1, null: false
+    t.string "opened_by", null: false
+    t.string "closed_by"
+    t.string "description", default: ""
+    t.string "unit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ticket_num"
+    t.integer "severity", default: 1, null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "unit_type", default: 0, null: false
+    t.integer "tickets_count"
+    t.string "unit_hash"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "ticket_num", default: 0
     t.index ["user_id"], name: "index_units_on_user_id"
   end
 
@@ -29,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_083832) do
     t.integer "units_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

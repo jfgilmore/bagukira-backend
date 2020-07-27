@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def index
-    users = User.all
+    # Default ordered by email
+    users = User.order(email: :desc).all
     render json: { users: users }, status: :ok
   end
 
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render status: :no_content
+      render json: {}, status: :no_content
     else
       render json: { errors: @user.errors.full_messages }, status: :internal_server_error
     end
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email) # , :password
   end
 
   def set_user
