@@ -58,3 +58,5 @@ gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
 gem 'bundler-audit', '~> 0.7.0'
+
+gem "mailgun-ruby", "~> 1.2"
