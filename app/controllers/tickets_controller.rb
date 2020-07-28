@@ -45,7 +45,8 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:subject, :status, :opened_by, :unit_id, :description, :closed_by, :ticket_num, :severity)
+    params.require(:ticket).permit(:subject, :status, :opened_by, :unit_id, :description,
+                                   :closed_by, :ticket_num, :severity)
   end
 
   def set_unit
