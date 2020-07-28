@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :units, shallow: true
   end
 
+  # Send project invites
+  post 'users/:id/units/:id/invite', to: 'units#invite'
+
   # Authentication
   post '/login', to: 'user_token#create'
   get '/status', to: 'status#index'

@@ -1,0 +1,14 @@
+<h1>Hi <%= /\A[^@\s]+/.match(@email) %></h1>
+<p>Hi</p>
+<p>
+    You have been invited to contribute to <%= @unit.name %> by <%= @user.email %>.
+</p>
+<p>
+    Please save this link to you browser, there is no need to create a login, just go to the project page.
+</p>
+<%= link_to(@unit.name, @url) %>
+<p>Regards,</p>
+<p>BaguKira Team</p>
+<br/>
+<p>Regards,</p>
+<p>BaguKira Team</p>

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      BaguMailMailer.with(user: user).user_created_mail.deliver_now
       render json: { success: 'user created' }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      BaguMailMailer.with(user: current_user).user_updated_mail.deliver_now
       render json: {}, status: :no_content
     else
       render json: { errors: current_user.errors.full_messages }, status: :internal_server_error
@@ -30,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    BaguMailMailer.with(user: current_user).user_destroyed_mail.deliver_now
     render json: {}, status: :no_content if current_user.destroy
   end
 
