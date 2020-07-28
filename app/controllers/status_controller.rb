@@ -2,7 +2,7 @@ class StatusController < ApplicationController
   before_action :authenticate_user
 
   def index
-    render json: { message: 'logged in' }
+    render json: { message: 'logged in' }, status: :ok
   end
 
   def user
