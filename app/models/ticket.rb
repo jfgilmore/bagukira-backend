@@ -1,8 +1,8 @@
 class Ticket < ApplicationRecord
   validates :subject, :status, :unit_id, :opened_by, presence: true
   validates :closed_by, presence: true, if: :status_closed?, on: :update
-  enum status: { open: 1, in_progress: 2, closed: 3 }
-  enum severity: { low: 1, medium: 2, high: 3, critical: 4 }
+  enum status: { OPEN: 1, "IN PROGRESS": 2, CLOSED: 3 }
+  enum severity: { LOW: 1, MEDIUM: 2, HIGH: 3, CRITICAL: 4 }
   belongs_to :unit, primary_key: 'unit_hash', counter_cache: true
 
   def to_param
@@ -10,6 +10,6 @@ class Ticket < ApplicationRecord
   end
 
   def status_closed?
-    status == 'closed'
+    status == 'CLOSED'
   end
 end
