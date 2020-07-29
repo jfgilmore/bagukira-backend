@@ -36,8 +36,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
-
   # config.action_mailer.deliver_later_queue_name = :mail_queue
 
   Mailgun.configure do |config|

@@ -61,8 +61,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
-
   # config.action_mailer.deliver_later_queue_name = :mail_queue
 
   Mailgun.configure do |config|
@@ -119,5 +117,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.allowed_cors_origins = 'bagukira.com'
+  config.allowed_cors_origins = 'http://bagukira.com'
 end
