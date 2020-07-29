@@ -4,9 +4,9 @@ class TicketsController < ApplicationController
   before_action :increment_ticket_num, only: :create
 
   # GET /units/:unit_hash/tickets
-  # Return a list of bugs sorted by status and date
+  # Return a list of bugs sorted by status, severity, and date.
   def index
-    tickets = @unit.tickets
+    tickets = @unit.tickets.order(:status).order(severity: :desc).order(:created_at)
     render json: { count: (@unit.tickets_count || 0), tickets: tickets }, status: :ok
   end
 
