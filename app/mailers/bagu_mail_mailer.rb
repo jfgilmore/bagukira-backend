@@ -5,7 +5,7 @@ class BaguMailMailer < ApplicationMailer
     @email = params[:email]
     @unit = params[:unit]
     @user = params[:user]
-    @url = "#{config.allowed_cors_origins}/projects/p/#{@unit.id}"
+    @url = "#{Rails.application.config.allowed_cors_origins}/projects/p/#{@unit.id}"
     mail(to: @email, subject: 'Invitation to contribute')
   end
 
