@@ -29,16 +29,25 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  # Actually send some mail!
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.perform_caching = true
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
 
   # config.action_mailer.deliver_later_queue_name = :mail_queue
 
+  Mailgun.configure do |config|
+    config.api_key = Rails.application.credentials.mailgun[:api_key]
+  end
+
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: Rails.application.secrets['mailgun_api_key'],
-    domain: Rails.application.secrets['mailgun_api_base_url']
+    api_key: Rails.application.credentials.mailgun[:api_key],
+    domain: Rails.application.credentials.mailgun[:api_base_url]
     # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
 
@@ -58,7 +67,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.allowed_cors_origins = %w[http://localhost:3000]
+  config.allowed_cors_origins = 'http://localhost:3000'
   # config.pguser = 'bagukira_backend_development'
   # config.pgpassword = 'postgres'
 end

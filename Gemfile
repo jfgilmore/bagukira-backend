@@ -34,7 +34,6 @@ gem 'rack-cors'
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 4.0'
-  gem 'prettier'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
@@ -59,4 +58,4 @@ gem 'rubocop-rspec', require: false
 
 gem 'bundler-audit', '~> 0.7.0'
 
-gem "mailgun-ruby", "~> 1.2"
+gem 'mailgun-ruby', '~> 1.2'

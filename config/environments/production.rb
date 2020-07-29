@@ -53,16 +53,26 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "bagukira_backend_production"
 
-  config.action_mailer.perform_caching = false
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  # Actually send some mail!
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.perform_caching = true
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+
+  # config.action_mailer.deliver_later_queue_name = :mail_queue
+
+  Mailgun.configure do |config|
+    config.api_key = Rails.application.credentials.mailgun[:api_key]
+  end
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: Rails.application.secrets['mailgun_api_key'],
-    domain: Rails.application.secrets['mailgun_api_base_url']
+    api_key: Rails.application.credentials.mailgun[:api_key],
+    domain: Rails.application.credentials.mailgun[:api_base_url]
     # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
 
@@ -109,5 +119,5 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.allowed_cors_origins = %w[bagukira.com]
+  config.allowed_cors_origins = 'bagukira.com'
 end
