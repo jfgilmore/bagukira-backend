@@ -4,8 +4,9 @@ class TicketsController < ApplicationController
   before_action :increment_ticket_num, only: :create
 
   # GET /units/:unit_hash/tickets
+  # Return a list of bugs sorted by status, severity, and date.
   def index
-    tickets = @unit.tickets
+    tickets = @unit.tickets.order(:status).order(severity: :desc).order(:created_at)
     render json: { count: (@unit.tickets_count || 0), tickets: tickets }, status: :ok
   end
 
@@ -15,6 +16,8 @@ class TicketsController < ApplicationController
   end
 
   # POST /units/:unit_hash/tickets
+  # Increments relative ticket number to allocate unique ticket id within
+  # the parent unit namespace. Rolls back on failure to create.
   def create
     # ticket_num relative to unit added as before_create action\
     new_params = ticket_params.merge(ticket_num: @unit.ticket_num)
@@ -23,6 +26,9 @@ class TicketsController < ApplicationController
     if @ticket.save
       render json: { tickets: @ticket }, status: :created
     else
+      # rubocop:disable Rails/SkipsModelValidations
+      @unit.decrement!(:ticket_num)
+      # rubocop:enable Rails/SkipsModelValidations
       render json: { errors: @ticket.errors.full_messages }, status: :unprocessable_entity
     end
   end
@@ -44,15 +50,18 @@ class TicketsController < ApplicationController
 
   private
 
+  # Set strong params
   def ticket_params
     params.require(:ticket).permit(:subject, :status, :opened_by, :unit_id, :description,
                                    :closed_by, :ticket_num, :severity)
   end
 
+  # Set the parent unit of the ticket
   def set_unit
     @unit = Unit.find_by!(unit_hash: params[:unit_id])
   end
 
+  # Retrieve the ticket
   def set_ticket
     @ticket = @unit.tickets.find_by!(ticket_num: params[:id])
   end
