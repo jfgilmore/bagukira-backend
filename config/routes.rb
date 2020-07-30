@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   post 'users/:user_id/units/:id/invite', to: 'units#invite'
 
   # Authentication
-  post '/login', to: 'user_token#create'
-  get '/status', to: 'status#index'
-  get '/status/user', to: 'status#user'
-  post '/sign-up', to: 'users#create'
+  post 'login', to: 'user_token#create'
+  get 'status', to: 'status#index'
+  get 'status/user', to: 'status#user'
+  post 'sign-up', to: 'users#create'
 end

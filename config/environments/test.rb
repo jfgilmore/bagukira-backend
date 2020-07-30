@@ -67,7 +67,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # CORS list
-  config.allowed_cors_origins = 'http://localhost:3000'
+  config.allowed_cors_origins = ['http://localhost:3000']
 
   # Disabling migration errors in test for GitHub Actions CI tests
   config.active_record.migration_error = true
