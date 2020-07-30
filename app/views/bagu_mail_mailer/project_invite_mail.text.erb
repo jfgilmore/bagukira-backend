@@ -1,7 +1,7 @@
 Hi <%= /\A[^@\s]+/.match(@email) %>
-You have been invited to contribute to <%= @project.name %> by <%= @user.email %>.
+You have been invited to contribute to <%= @unit.name %> by <%= @user.email %>.
 Please save this link to you browser, there is no need to create a login, just go to the project page.
-<%= @link %>
+<%= "#{Rails.application.config.allowed_cors_origins}#{@url}" %>
 
 Regards,
 BaguKira Team

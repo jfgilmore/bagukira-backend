@@ -6,7 +6,7 @@
 <p>
     Please save this link to you browser, there is no need to create a login, just go to the project page.
 </p>
-<%= link_to(@unit.name, @url) %>
+<%= link_to(@unit.name, "#{Rails.application.config.allowed_cors_origins}#{@url}") %>
 <p>Regards,</p>
 <p>BaguKira Team</p>
 <br/>

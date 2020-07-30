@@ -3,7 +3,7 @@ FactoryBot.define do
     sequence :subject do |n|
       "Bug Report #{n}"
     end
-    status { :open }
+    status { 'OPEN' }
     opened_by { 'Josh' }
     description { 'Something to do with CI.' }
     unit { Unit.first || association(:unit) }

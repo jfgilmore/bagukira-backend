@@ -34,12 +34,31 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   config.active_storage.service = :test
 
-  config.action_mailer.perform_caching = false
+  # Actually send some mail!
+  config.action_mailer.perform_deliveries = false
+
+  # config.action_mailer.deliver_later_queue_name = :mail_queue
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = true
+
+  Mailgun.configure do |config|
+    config.api_key = Rails.application.credentials.mailgun[:api_key]
+  end
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: Rails.application.credentials.mailgun[:api_key],
+    domain: Rails.application.credentials.mailgun[:api_base_url]
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
@@ -48,7 +67,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # CORS list
-  config.allowed_cors_origins = %w[http://localhost:3000]
+  config.allowed_cors_origins = 'http://localhost:3000'
   # config.pguser = 'bagukira_backend_test'
   # config.pgpassword = 'postgres'
 
