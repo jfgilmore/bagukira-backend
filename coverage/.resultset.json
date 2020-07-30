@@ -1,0 +1,473 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 17, 4, 17, 75]": {
+            "[:then, 1, 17, 4, 17, 34]": 0,
+            "[:else, 2, 17, 4, 17, 75]": 0
+          }
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/tickets_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 26, 4, 33, 7]": {
+            "[:then, 1, 27, 6, 27, 57]": 0,
+            "[:else, 2, 30, 6, 32, 90]": 0
+          },
+          "[:if, 3, 38, 4, 42, 7]": {
+            "[:then, 4, 39, 6, 39, 42]": 0,
+            "[:else, 5, 41, 6, 41, 91]": 0
+          }
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/mailers/bagu_mail_mailer.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/mailers/application_mailer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/models/ticket.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/models/unit.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/units_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 27, 4, 32, 7]": {
+            "[:then, 1, 28, 6, 29, 52]": 0,
+            "[:else, 2, 31, 6, 31, 87]": 0
+          },
+          "[:if, 3, 36, 4, 40, 7]": {
+            "[:then, 4, 37, 6, 37, 42]": 0,
+            "[:else, 5, 39, 6, 39, 89]": 0
+          },
+          "[:if, 6, 44, 4, 44, 57]": {
+            "[:then, 7, 44, 4, 44, 40]": 0,
+            "[:else, 8, 44, 4, 44, 57]": 0
+          }
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "branches": {
+          "[:if, 0, 17, 4, 22, 7]": {
+            "[:then, 1, 18, 6, 19, 64]": 0,
+            "[:else, 2, 21, 6, 21, 87]": 0
+          },
+          "[:if, 3, 26, 4, 31, 7]": {
+            "[:then, 4, 27, 6, 28, 42]": 0,
+            "[:else, 5, 30, 6, 30, 96]": 0
+          },
+          "[:if, 6, 36, 4, 36, 64]": {
+            "[:then, 7, 36, 4, 36, 40]": 0,
+            "[:else, 8, 36, 4, 36, 64]": 0
+          }
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/status_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/controllers/user_token_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/channels/application_cable/connection.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/app/channels/application_cable/channel.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1596097850
+  }
+}
