@@ -61,8 +61,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
 
-  # config.action_mailer.deliver_later_queue_name = :mail_queue
-
   Mailgun.configure do |config|
     config.api_key = Rails.application.credentials.mailgun[:api_key]
   end
