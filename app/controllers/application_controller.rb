@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::API
   include Knock::Authenticable
 
-  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
-  rescue_from ActiveRecord::DeleteRestrictionError, with: :handle_cant_destroy_dependents
-  rescue_from ActionController::ParameterMissing, with: :handle_missing_parameters
+  rescue_from RecordNotFound, with: :handle_not_found
+  rescue_from DeleteRestrictionError, with: :handle_cant_destroy_dependents
+  rescue_from ParameterMissing, with: :handle_missing_parameters
   rescue_from StandardError, with: :handle_uncaught_error
 
   # Valid 4hrs: change in config/initializers/knock.rb .token_lifetime
