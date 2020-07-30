@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include Knock::Authenticable
+
   # rescue_from RecordNotFound, with: :handle_not_found
   # rescue_from DeleteRestrictionError, with: :handle_cant_destroy_dependents
   # rescue_from ParameterMissing, with: :handle_missing_parameters

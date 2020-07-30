@@ -19,12 +19,12 @@ RSpec.describe 'Routing', type: :routing do
     it { should route(:delete, '/units/1').to(controller: :units, action: :destroy, id: 1) }
   end
 
-  # describe 'Project redirect routes' do
-  #   it { expect(get('projects')).to route_to(controller: 'units', action: 'index') }
-  #   it { expect(post('projects')).to route_to(controller: 'units', action: 'create') }
-  #   it { expect(get('projects/1')).to route_to(controller: 'units', action: 'show', id: '1') }
-  #   it { expect(put('projects/1')).to route_to(controller: 'units', action: 'update', id: '1') }
-  #   it { expect(patch('projects/1')).to route_to(controller: 'units', action: 'update', id: '1') }
-  #   it { expect(delete('projects/1')).to route_to(controller: 'units', action: 'destroy', id: '1') }
-  # end
+  describe 'Ticket routes' do
+    it { should route(:get, 'units/1/tickets').to(controller: :tickets, action: :index, unit_id: 1) }
+    it { should route(:get, 'units/1/tickets/1').to(controller: :tickets, action: :show, unit_id: 1, id: 1) }
+    it { should route(:post, 'units/1/tickets').to(controller: :tickets, action: :create, unit_id: 1) }
+    it { should route(:put, 'units/1/tickets/1').to(controller: :tickets, action: :update, unit_id: 1, id: 1) }
+    it { should route(:patch, 'units/1/tickets/1').to(controller: :tickets, action: :update, unit_id: 1, id: 1) }
+    it { should route(:delete, 'units/1/tickets/1').to(controller: :tickets, action: :destroy, unit_id: 1, id: 1) }
+  end
 end
