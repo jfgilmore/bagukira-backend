@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins Rails.application.config.allowed_cors_origins
+    origins 'https://bagukira.com, https://www.bagukira.com, http://bagukira.com, http://www.bagukira.com'
 
     resource '*',
              headers: :any, methods: %i[get post put patch delete options head]
