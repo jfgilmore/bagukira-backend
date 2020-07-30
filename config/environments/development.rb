@@ -66,6 +66,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.allowed_cors_origins = 'http://localhost:3000'
-  # config.pguser = 'bagukira_backend_development'
-  # config.pgpassword = 'postgres'
 end
