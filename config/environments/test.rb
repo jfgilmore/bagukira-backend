@@ -68,8 +68,6 @@ Rails.application.configure do
 
   # CORS list
   config.allowed_cors_origins = 'http://localhost:3000'
-  # config.pguser = 'bagukira_backend_test'
-  # config.pgpassword = 'postgres'
 
   # Disabling migration errors in test for GitHub Actions CI tests
   config.active_record.migration_error = true

@@ -13,7 +13,7 @@ class UnitsController < ApplicationController
     @user = current_user
     list = unit_params[:invite_list]
     list.each do |address|
-      BaguMailMailer.with({ user: @user, unit: @unit, email: address }).project_invite_mail.deliver # _now
+      BaguMailMailer.with({ user: @user, unit: @unit, email: address }).project_invite_mail.deliver_now
     end
     render json: {}, status: :no_content
   end

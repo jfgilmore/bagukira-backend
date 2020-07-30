@@ -36,8 +36,6 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
-
   # config.action_mailer.deliver_later_queue_name = :mail_queue
 
   Mailgun.configure do |config|
@@ -68,6 +66,4 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.allowed_cors_origins = 'http://localhost:3000'
-  # config.pguser = 'bagukira_backend_development'
-  # config.pgpassword = 'postgres'
 end
