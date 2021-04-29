@@ -1,11 +1,7 @@
 FactoryBot.define do
   factory :user do
-    sequence :email do |n|
-      "username#{n}@domain.com"
-    end
-    sequence :password do |n|
-      "password#{n}"
-    end
+    email
+    password { 'password' }
 
     trait :invalid do
       email { nil }
