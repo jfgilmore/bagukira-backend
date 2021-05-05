@@ -281,460 +281,241 @@ a {
 <div class="results">
 <div id="div_group_1" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_1" class="passed">User</dt>
+  <dt id="example_group_1" class="passed">ApplicationController</dt>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_2" class="passed">validations</dt>
+  <dt id="example_group_2" class="passed">error handling</dt>
     <script type="text/javascript">moveProgressBar('1.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :email is unique</span><span class='duration'>0.05427s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">is expected to rescue from ActionController::ParameterMissing with #handle_missing_parameters</span><span class='duration'>0.00353s</span></dd>
     <script type="text/javascript">moveProgressBar('2.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :email to be ‹&quot;test.gmail.com&quot;›</span><span class='duration'>0.00659s</span></dd>
-    <script type="text/javascript">moveProgressBar('3.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to allow :email to be ‹&quot;test@gmail.com&quot;›</span><span class='duration'>0.00512s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">is expected to rescue from ActiveRecord::RecordNotFound with #handle_not_found</span><span class='duration'>0.00086s</span></dd>
+    <script type="text/javascript">moveProgressBar('3.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to rescue from ActiveRecord::DeleteRestrictionError with #handle_cant_destroy_dependents</span><span class='duration'>0.00073s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_3" class="passed">associations</dt>
-    <script type="text/javascript">moveProgressBar('4.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to have many units</span><span class='duration'>0.00565s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_3" class="passed">UsersController</dt>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_4" class="passed">Users</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_4" class="passed">GET #show</dt>
   </dl>
 </div>
 <div id="div_group_5" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_5" class="passed">GET #index</dt>
-    <script type="text/javascript">moveProgressBar('5.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with a success status code (2xx)</span><span class='duration'>0.04020s</span></dd>
-    <script type="text/javascript">moveProgressBar('6.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response body contains the expected attributes</span><span class='duration'>0.01584s</span></dd>
-    <script type="text/javascript">moveProgressBar('7.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response contains the correct number of entries</span><span class='duration'>0.01313s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_5" class="passed">when id does not exist</dt>
+    <script type="text/javascript">moveProgressBar('4.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.10767s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_6" class="passed">DELETE #destroy</dt>
-    <script type="text/javascript">moveProgressBar('8.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">removes the entry from the database</span><span class='duration'>0.02760s</span></dd>
-    <script type="text/javascript">moveProgressBar('9.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01575s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_6" class="passed">when id does exist</dt>
+    <script type="text/javascript">moveProgressBar('5.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :authenticate_user as a before_action</span><span class='duration'>0.01336s</span></dd>
+    <script type="text/javascript">moveProgressBar('6.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_user as a before_action</span><span class='duration'>0.01062s</span></dd>
   </dl>
 </div>
 <div id="div_group_7" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_7" class="passed">PATCH #update</dt>
-    <script type="text/javascript">moveProgressBar('10.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with a success status code (2xx)</span><span class='duration'>0.01934s</span></dd>
+  <dt id="example_group_7" class="passed">POST #create</dt>
   </dl>
 </div>
 <div id="div_group_8" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_8" class="passed">POST #create</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_8" class="passed">when user is missing email</dt>
+    <script type="text/javascript">moveProgressBar('7.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns the correct number of errors</span><span class='duration'>0.01957s</span></dd>
+    <script type="text/javascript">moveProgressBar('8.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">errors contains the correct message</span><span class='duration'>0.01130s</span></dd>
+    <script type="text/javascript">moveProgressBar('9.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 422</span><span class='duration'>0.01195s</span></dd>
   </dl>
 </div>
 <div id="div_group_9" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_9" class="passed">when user has valid attributes</dt>
-    <script type="text/javascript">moveProgressBar('11.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :created (201)</span><span class='duration'>0.01060s</span></dd>
-    <script type="text/javascript">moveProgressBar('12.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">saves the user to the database</span><span class='duration'>0.01166s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_9" class="passed">DELETE #destroy</dt>
   </dl>
 </div>
 <div id="div_group_10" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_10" class="passed">PUT #update</dt>
-    <script type="text/javascript">moveProgressBar('13.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01336s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_10" class="passed">with an invalid id</dt>
+    <script type="text/javascript">moveProgressBar('10.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.01539s</span></dd>
   </dl>
 </div>
 <div id="div_group_11" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_11" class="passed">GET #show</dt>
-    <script type="text/javascript">moveProgressBar('14.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns http success</span><span class='duration'>0.01177s</span></dd>
-    <script type="text/javascript">moveProgressBar('15.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns just one User</span><span class='duration'>0.01183s</span></dd>
-    <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response contains all desired attributes</span><span class='duration'>0.01388s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_11" class="passed">with a valid id</dt>
+    <script type="text/javascript">moveProgressBar('11.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_user as a before_action</span><span class='duration'>0.03917s</span></dd>
+    <script type="text/javascript">moveProgressBar('12.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :authenticate_user as a before_action</span><span class='duration'>0.01299s</span></dd>
   </dl>
 </div>
 <div id="div_group_12" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_12" class="passed">ApplicationController</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_12" class="passed">GET #index</dt>
   </dl>
 </div>
 <div id="div_group_13" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_13" class="passed">shared methods</dt>
-    <script type="text/javascript">moveProgressBar('17.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to rescue from ActiveRecord::RecordNotFound with #handle_not_found</span><span class='duration'>0.00345s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_13" class="passed">when has no entries</dt>
+    <script type="text/javascript">moveProgressBar('13.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :authenticate_user as a before_action</span><span class='duration'>0.00722s</span></dd>
   </dl>
 </div>
 <div id="div_group_14" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_14" class="passed">Unit</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_14" class="passed">PUT #update</dt>
   </dl>
 </div>
 <div id="div_group_15" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_15" class="passed">associations</dt>
-    <script type="text/javascript">moveProgressBar('18.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to belong to user required: true</span><span class='duration'>0.02398s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_15" class="passed">when user has valid attributes</dt>
+    <script type="text/javascript">moveProgressBar('14.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :authenticate_user as a before_action</span><span class='duration'>0.02230s</span></dd>
+    <script type="text/javascript">moveProgressBar('15.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_user as a before_action</span><span class='duration'>0.02149s</span></dd>
   </dl>
 </div>
 <div id="div_group_16" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_16" class="passed">validations</dt>
-    <script type="text/javascript">moveProgressBar('19.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :name cannot be empty/falsy</span><span class='duration'>0.01036s</span></dd>
-    <script type="text/javascript">moveProgressBar('20.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :user_id cannot be empty/falsy</span><span class='duration'>0.00779s</span></dd>
-    <script type="text/javascript">moveProgressBar('21.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">has valid factory</span><span class='duration'>0.00564s</span></dd>
-    <script type="text/javascript">moveProgressBar('22.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :unit_type cannot be empty/falsy</span><span class='duration'>0.00806s</span></dd>
-    <script type="text/javascript">moveProgressBar('23.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to validate that the length of :name is at least 3</span><span class='duration'>0.00741s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_16" class="passed">when user has invalid attributes</dt>
+    <script type="text/javascript">moveProgressBar('16.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 500</span><span class='duration'>0.01208s</span></dd>
+    <script type="text/javascript">moveProgressBar('17.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns the correct number of errors</span><span class='duration'>0.03535s</span></dd>
+    <script type="text/javascript">moveProgressBar('18.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">won&#39;t save the changes to the database</span><span class='duration'>0.01998s</span></dd>
   </dl>
 </div>
 <div id="div_group_17" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_17" class="passed">Ticket</dt>
-    <script type="text/javascript">makeYellow('rspec-header');</script>
-    <script type="text/javascript">makeYellow('div_group_17');</script>
-    <script type="text/javascript">makeYellow('example_group_17');</script>
-    <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/gilmore/Desktop/code/JoshuaGilmore_T3A2-B/bagukira-backend/spec/models/ticket_spec.rb (PENDING: Not yet implemented)</span></dd>
+  <dt id="example_group_17" class="passed">TicketsController</dt>
+    <script type="text/javascript">moveProgressBar('19.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_ticket as a before_action</span><span class='duration'>0.00100s</span></dd>
+    <script type="text/javascript">moveProgressBar('20.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_unit as a before_action</span><span class='duration'>0.00072s</span></dd>
   </dl>
 </div>
 <div id="div_group_18" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_18" class="passed">TicketsController</dt>
-    <script type="text/javascript">moveProgressBar('26.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_ticket as a before_action</span><span class='duration'>0.00203s</span></dd>
+  <dt id="example_group_18" class="passed">UnitsController</dt>
+    <script type="text/javascript">moveProgressBar('21.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_unit as a before_action</span><span class='duration'>0.00066s</span></dd>
   </dl>
 </div>
 <div id="div_group_19" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_19" class="passed">GET #show</dt>
+  <dt id="example_group_19" class="passed">PUT #update</dt>
+    <script type="text/javascript">moveProgressBar('22.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 500</span><span class='duration'>0.02612s</span></dd>
   </dl>
 </div>
 <div id="div_group_20" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_20" class="passed">when id does exist</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_20');</script>
-    <script type="text/javascript">makeRed('example_group_20');</script>
-    <script type="text/javascript">moveProgressBar('27.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:36</span>
-      <span class="duration">0.01495s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbed696508&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:31:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:31:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('28.1');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:35</span>
-      <span class="duration">0.00303s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbe955daf0&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:31:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:31:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_20" class="passed">GET #index</dt>
   </dl>
 </div>
 <div id="div_group_21" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_21" class="passed">when id does not exist</dt>
-    <script type="text/javascript">makeRed('div_group_21');</script>
-    <script type="text/javascript">makeRed('example_group_21');</script>
-    <script type="text/javascript">moveProgressBar('29.1');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:26</span>
-      <span class="duration">0.00620s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>  Failure/Error: @ticket = Tickets.find(params[:id])
-
-  NameError:
-    uninitialized constant TicketsController::Tickets
-  # ./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">41</span>
-<span class="linenum">42</span>  def set_ticket
-<span class="offending"><span class="linenum">43</span>    @ticket = Tickets.find(params[:id])</span>
-<span class="linenum">44</span>  end
-<span class="linenum">45</span>end
-<span class="linenum">46</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('30.2');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:24</span>
-      <span class="duration">0.00477s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>  Failure/Error: @ticket = Tickets.find(params[:id])
-
-  NameError:
-    uninitialized constant TicketsController::Tickets
-  # ./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">41</span>
-<span class="linenum">42</span>  def set_ticket
-<span class="offending"><span class="linenum">43</span>    @ticket = Tickets.find(params[:id])</span>
-<span class="linenum">44</span>  end
-<span class="linenum">45</span>end
-<span class="linenum">46</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('31.2');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:25</span>
-      <span class="duration">0.00495s</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>  Failure/Error: @ticket = Tickets.find(params[:id])
-
-  NameError:
-    uninitialized constant TicketsController::Tickets
-  # ./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-./spec/controllers/tickets_controller_spec.rb:21:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">41</span>
-<span class="linenum">42</span>  def set_ticket
-<span class="offending"><span class="linenum">43</span>    @ticket = Tickets.find(params[:id])</span>
-<span class="linenum">44</span>  end
-<span class="linenum">45</span>end
-<span class="linenum">46</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_21" class="passed">when has no entries</dt>
+    <script type="text/javascript">moveProgressBar('23.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to include {&quot;units&quot; =&gt; []}</span><span class='duration'>0.01055s</span></dd>
+    <script type="text/javascript">moveProgressBar('24.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response contains the correct number of entries</span><span class='duration'>0.00682s</span></dd>
+    <script type="text/javascript">moveProgressBar('25.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00749s</span></dd>
   </dl>
 </div>
 <div id="div_group_22" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_22" class="passed">DELETE #destroy</dt>
+  <dt id="example_group_22" class="passed">POST #create</dt>
   </dl>
 </div>
 <div id="div_group_23" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_23" class="passed">with invalid id</dt>
-    <script type="text/javascript">makeRed('div_group_23');</script>
-    <script type="text/javascript">makeRed('example_group_23');</script>
-    <script type="text/javascript">moveProgressBar('32.2');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:78</span>
-      <span class="duration">0.00613s</span>
-      <div class="failure" id="failure_6">
-        <div class="message"><pre>  Failure/Error: @ticket = Tickets.find(params[:id])
-
-  NameError:
-    uninitialized constant TicketsController::Tickets
-  # ./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:75:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./app/controllers/tickets_controller.rb:43:in `set_ticket&#39;
-./spec/controllers/tickets_controller_spec.rb:75:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">41</span>
-<span class="linenum">42</span>  def set_ticket
-<span class="offending"><span class="linenum">43</span>    @ticket = Tickets.find(params[:id])</span>
-<span class="linenum">44</span>  end
-<span class="linenum">45</span>end
-<span class="linenum">46</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_23" class="passed">when unit has invalid attributes</dt>
+    <script type="text/javascript">moveProgressBar('26.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns the correct number of errors</span><span class='duration'>0.00924s</span></dd>
+    <script type="text/javascript">moveProgressBar('27.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 422</span><span class='duration'>0.00919s</span></dd>
+    <script type="text/javascript">moveProgressBar('28.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">errors contains the correct message</span><span class='duration'>0.00918s</span></dd>
   </dl>
 </div>
 <div id="div_group_24" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_24" class="passed">PUT #update</dt>
-    <script type="text/javascript">makeRed('div_group_24');</script>
-    <script type="text/javascript">makeRed('example_group_24');</script>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:68</span>
-      <span class="duration">0.00234s</span>
-      <div class="failure" id="failure_7">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbed60d028&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:63:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:63:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_24" class="passed">DELETE #destroy</dt>
   </dl>
 </div>
 <div id="div_group_25" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_25" class="passed">GET #index</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_25" class="passed">with invalid id</dt>
+    <script type="text/javascript">moveProgressBar('29.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00692s</span></dd>
   </dl>
 </div>
 <div id="div_group_26" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_26" class="passed">has no entries</dt>
-    <script type="text/javascript">moveProgressBar('34.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00454s</span></dd>
-    <script type="text/javascript">moveProgressBar('35.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00437s</span></dd>
-    <script type="text/javascript">moveProgressBar('36.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq {&quot;tickets&quot;=&gt;[]}</span><span class='duration'>0.00390s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_26" class="passed">GET #show</dt>
   </dl>
 </div>
 <div id="div_group_27" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_27" class="passed">POST #create</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_27" class="passed">when id does not exist</dt>
+    <script type="text/javascript">moveProgressBar('30.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00266s</span></dd>
+    <script type="text/javascript">moveProgressBar('31.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to eq {}</span><span class='duration'>0.00245s</span></dd>
   </dl>
 </div>
 <div id="div_group_28" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_28" class="passed">when ticket has invalid attributes</dt>
-    <script type="text/javascript">makeRed('div_group_28');</script>
-    <script type="text/javascript">makeRed('example_group_28');</script>
-    <script type="text/javascript">moveProgressBar('37.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">example at ./spec/controllers/tickets_controller_spec.rb:57</span>
-      <span class="duration">0.00283s</span>
-      <div class="failure" id="failure_8">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbee59c3b8&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('38.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">errors contains the correct message</span>
-      <span class="duration">0.00297s</span>
-      <div class="failure" id="failure_9">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbef055408&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('39.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">returns the correct number of errors</span>
-      <span class="duration">0.00271s</span>
-      <div class="failure" id="failure_10">
-        <div class="message"><pre>  Failure/Error: unit_id { unit.id }
-
-  NoMethodError:
-    undefined method `unit&#39; for #&lt;FactoryBot::SyntaxRunner:0x00007fbbee859060&gt;
-    Did you mean?  until
-  # ./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-  # ./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/factories/tickets.rb:3:in `block (3 levels) in &lt;top (required)&gt;&#39;
-./spec/controllers/tickets_controller_spec.rb:43:in `block (4 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">1</span>FactoryBot.define do
-<span class="linenum">2</span>  factory :ticket, aliases: [:bug] do
-<span class="offending"><span class="linenum">3</span>    unit_id { unit.id }</span>
-<span class="linenum">4</span>    sequence :subject do |n|
-<span class="linenum">5</span>      "Bug Report #{n}"
-<span class="linenum">6</span><span class="comment"># Install the coderay gem to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+  <dt id="example_group_28" class="passed">when id does exist</dt>
+    <script type="text/javascript">moveProgressBar('32.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00882s</span></dd>
   </dl>
 </div>
 <div id="div_group_29" class="example_group passed">
   <dl style="margin-left: 0px;">
-  <dt id="example_group_29" class="passed">UsersController</dt>
-    <script type="text/javascript">moveProgressBar('40.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_user as a before_action</span><span class='duration'>0.00218s</span></dd>
+  <dt id="example_group_29" class="passed">BaguMailMailer</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
+    <script type="text/javascript">makeYellow('div_group_29');</script>
+    <script type="text/javascript">makeYellow('example_group_29');</script>
+    <script type="text/javascript">moveProgressBar('33.3');</script>
+    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/gilmore/code/bagukira-backend/spec/mailers/bagu_mail_mailer_spec.rb (PENDING: Not yet implemented)</span></dd>
   </dl>
 </div>
 <div id="div_group_30" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_30" class="passed">GET #show</dt>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_30" class="passed">Users</dt>
   </dl>
 </div>
 <div id="div_group_31" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_31" class="passed">when id does exist</dt>
-    <script type="text/javascript">moveProgressBar('41.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00660s</span></dd>
-    <script type="text/javascript">moveProgressBar('42.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00668s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_31" class="passed">GET #show</dt>
+    <script type="text/javascript">moveProgressBar('34.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.02238s</span></dd>
+    <script type="text/javascript">moveProgressBar('35.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns http success</span><span class='duration'>0.01136s</span></dd>
+    <script type="text/javascript">moveProgressBar('36.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns just one User</span><span class='duration'>0.01275s</span></dd>
+    <script type="text/javascript">moveProgressBar('37.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response contains all desired attributes</span><span class='duration'>0.01319s</span></dd>
   </dl>
 </div>
 <div id="div_group_32" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_32" class="passed">when id does not exist</dt>
-    <script type="text/javascript">moveProgressBar('43.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00366s</span></dd>
-    <script type="text/javascript">moveProgressBar('44.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00370s</span></dd>
-    <script type="text/javascript">moveProgressBar('45.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq {}</span><span class='duration'>0.00355s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_32" class="passed">PATCH #update</dt>
+    <script type="text/javascript">moveProgressBar('38.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01951s</span></dd>
   </dl>
 </div>
 <div id="div_group_33" class="example_group passed">
@@ -744,255 +525,253 @@ a {
 </div>
 <div id="div_group_34" class="example_group passed">
   <dl style="margin-left: 30px;">
-  <dt id="example_group_34" class="passed">when user has invalid attributes</dt>
-    <script type="text/javascript">moveProgressBar('46.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">errors contains the correct message</span><span class='duration'>0.00824s</span></dd>
-    <script type="text/javascript">moveProgressBar('47.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 422</span><span class='duration'>0.00639s</span></dd>
-    <script type="text/javascript">moveProgressBar('48.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns the correct number of errors</span><span class='duration'>0.00606s</span></dd>
+  <dt id="example_group_34" class="passed">when user has valid attributes</dt>
+    <script type="text/javascript">moveProgressBar('39.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :created (201)</span><span class='duration'>0.01701s</span></dd>
+    <script type="text/javascript">moveProgressBar('40.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">saves the user to the database</span><span class='duration'>0.01777s</span></dd>
+    <script type="text/javascript">moveProgressBar('41.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.01475s</span></dd>
   </dl>
 </div>
 <div id="div_group_35" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_35" class="passed">DELETE #destroy</dt>
+  <dt id="example_group_35" class="passed">PUT #update</dt>
+    <script type="text/javascript">moveProgressBar('42.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01904s</span></dd>
+    <script type="text/javascript">moveProgressBar('43.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">saves the changes to the database</span><span class='duration'>0.01932s</span></dd>
   </dl>
 </div>
 <div id="div_group_36" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_36" class="passed">with invalid id</dt>
-    <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00467s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_36" class="passed">GET #index</dt>
+    <script type="text/javascript">moveProgressBar('44.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response contains the correct number of entries</span><span class='duration'>0.01529s</span></dd>
+    <script type="text/javascript">moveProgressBar('45.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.01436s</span></dd>
+    <script type="text/javascript">moveProgressBar('46.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :ok (200)</span><span class='duration'>0.01456s</span></dd>
+    <script type="text/javascript">moveProgressBar('47.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response body contains the expected attributes</span><span class='duration'>0.01411s</span></dd>
   </dl>
 </div>
 <div id="div_group_37" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_37" class="passed">GET #index</dt>
+  <dt id="example_group_37" class="passed">DELETE #destroy</dt>
+    <script type="text/javascript">moveProgressBar('48.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01760s</span></dd>
+    <script type="text/javascript">moveProgressBar('49.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">removes the entry from the database</span><span class='duration'>0.01888s</span></dd>
   </dl>
 </div>
 <div id="div_group_38" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_38" class="passed">has no entries</dt>
-    <script type="text/javascript">moveProgressBar('51.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00415s</span></dd>
-    <script type="text/javascript">moveProgressBar('52.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00389s</span></dd>
-    <script type="text/javascript">moveProgressBar('53.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq {&quot;users&quot;=&gt;[]}</span><span class='duration'>0.00379s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_38" class="passed">Unit</dt>
   </dl>
 </div>
 <div id="div_group_39" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_39" class="passed">PUT #update</dt>
-    <script type="text/javascript">moveProgressBar('54.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 500</span><span class='duration'>0.00928s</span></dd>
+  <dt id="example_group_39" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('50.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many tickets</span><span class='duration'>0.00540s</span></dd>
+    <script type="text/javascript">moveProgressBar('51.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to user required: true</span><span class='duration'>0.00361s</span></dd>
   </dl>
 </div>
 <div id="div_group_40" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_40" class="passed">Routing</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_40" class="passed">validations</dt>
+    <script type="text/javascript">moveProgressBar('52.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">has valid factory</span><span class='duration'>0.00191s</span></dd>
+    <script type="text/javascript">moveProgressBar('53.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :name cannot be empty/falsy</span><span class='duration'>0.00557s</span></dd>
+    <script type="text/javascript">moveProgressBar('54.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :unit_type cannot be empty/falsy</span><span class='duration'>0.00393s</span></dd>
+    <script type="text/javascript">moveProgressBar('55.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :user_id cannot be empty/falsy</span><span class='duration'>0.00435s</span></dd>
   </dl>
 </div>
 <div id="div_group_41" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_41" class="passed">Project redirect routes</dt>
-    <script type="text/javascript">moveProgressBar('55.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:get=&gt;&quot;projects/1&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;show&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00220s</span></dd>
-    <script type="text/javascript">moveProgressBar('56.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:get=&gt;&quot;projects&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;index&quot;}</span><span class='duration'>0.00195s</span></dd>
-    <script type="text/javascript">moveProgressBar('57.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:patch=&gt;&quot;projects/1&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00210s</span></dd>
-    <script type="text/javascript">moveProgressBar('58.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:post=&gt;&quot;projects&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;create&quot;}</span><span class='duration'>0.00207s</span></dd>
-    <script type="text/javascript">moveProgressBar('59.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:delete=&gt;&quot;projects/1&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;destroy&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00210s</span></dd>
-    <script type="text/javascript">moveProgressBar('60.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route {:put=&gt;&quot;projects/1&quot;} to {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00204s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_41" class="passed">Routing</dt>
   </dl>
 </div>
 <div id="div_group_42" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_42" class="passed">Unit routes</dt>
-    <script type="text/javascript">moveProgressBar('61.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;show&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00262s</span></dd>
-    <script type="text/javascript">moveProgressBar('62.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route POST /units to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;create&quot;}</span><span class='duration'>0.00250s</span></dd>
-    <script type="text/javascript">moveProgressBar('63.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;index&quot;}</span><span class='duration'>0.00219s</span></dd>
-    <script type="text/javascript">moveProgressBar('64.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route PATCH /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00227s</span></dd>
-    <script type="text/javascript">moveProgressBar('65.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route PUT /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00236s</span></dd>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route DELETE /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;destroy&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00237s</span></dd>
+  <dt id="example_group_42" class="passed">Ticket routes</dt>
+    <script type="text/javascript">moveProgressBar('56.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units/1/tickets to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;index&quot;, :unit_id=&gt;&quot;1&quot;}</span><span class='duration'>0.00113s</span></dd>
+    <script type="text/javascript">moveProgressBar('57.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route DELETE /units/1/tickets/1 to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;destroy&quot;, :unit_id=&gt;&quot;1&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00096s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route POST /units/1/tickets to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;create&quot;, :unit_id=&gt;&quot;1&quot;}</span><span class='duration'>0.00086s</span></dd>
+    <script type="text/javascript">moveProgressBar('59.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PUT /units/1/tickets/1 to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;update&quot;, :unit_id=&gt;&quot;1&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00093s</span></dd>
+    <script type="text/javascript">moveProgressBar('60.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PATCH /units/1/tickets/1 to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;update&quot;, :unit_id=&gt;&quot;1&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00087s</span></dd>
+    <script type="text/javascript">moveProgressBar('61.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units/1/tickets/1 to/from {:controller=&gt;&quot;tickets&quot;, :action=&gt;&quot;show&quot;, :unit_id=&gt;&quot;1&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00092s</span></dd>
   </dl>
 </div>
 <div id="div_group_43" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_43" class="passed">User routes</dt>
-    <script type="text/javascript">moveProgressBar('67.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route DELETE /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;destroy&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00205s</span></dd>
-    <script type="text/javascript">moveProgressBar('68.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /users to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;index&quot;}</span><span class='duration'>0.00200s</span></dd>
-    <script type="text/javascript">moveProgressBar('69.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route POST /users to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;create&quot;}</span><span class='duration'>0.00207s</span></dd>
-    <script type="text/javascript">moveProgressBar('70.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;show&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00218s</span></dd>
-    <script type="text/javascript">moveProgressBar('71.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route PUT /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00202s</span></dd>
-    <script type="text/javascript">moveProgressBar('72.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to route PATCH /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00248s</span></dd>
+    <script type="text/javascript">moveProgressBar('62.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PUT /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00081s</span></dd>
+    <script type="text/javascript">moveProgressBar('63.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route DELETE /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;destroy&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00080s</span></dd>
+    <script type="text/javascript">moveProgressBar('64.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /users to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;index&quot;}</span><span class='duration'>0.00075s</span></dd>
+    <script type="text/javascript">moveProgressBar('65.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PATCH /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00078s</span></dd>
+    <script type="text/javascript">moveProgressBar('66.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /users/1 to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;show&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00087s</span></dd>
+    <script type="text/javascript">moveProgressBar('67.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route POST /users to/from {:controller=&gt;&quot;users&quot;, :action=&gt;&quot;create&quot;}</span><span class='duration'>0.00076s</span></dd>
   </dl>
 </div>
 <div id="div_group_44" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_44" class="passed">Units</dt>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_44" class="passed">Unit routes</dt>
+    <script type="text/javascript">moveProgressBar('68.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route DELETE /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;destroy&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00089s</span></dd>
+    <script type="text/javascript">moveProgressBar('69.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route POST /units to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;create&quot;}</span><span class='duration'>0.00079s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;index&quot;}</span><span class='duration'>0.00079s</span></dd>
+    <script type="text/javascript">moveProgressBar('71.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PUT /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00094s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route PATCH /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;update&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00084s</span></dd>
+    <script type="text/javascript">moveProgressBar('73.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to route GET /units/1 to/from {:controller=&gt;&quot;units&quot;, :action=&gt;&quot;show&quot;, :id=&gt;&quot;1&quot;}</span><span class='duration'>0.00117s</span></dd>
   </dl>
 </div>
 <div id="div_group_45" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_45" class="passed">GET #index</dt>
-    <script type="text/javascript">moveProgressBar('73.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response contains the correct number of entries</span><span class='duration'>0.02762s</span></dd>
-    <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response body contains the expected attributes</span><span class='duration'>0.02526s</span></dd>
-    <script type="text/javascript">moveProgressBar('76.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with a success status code (2xx)</span><span class='duration'>0.01919s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_45" class="passed">Units</dt>
   </dl>
 </div>
 <div id="div_group_46" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_46" class="passed">PATCH #update</dt>
-    <script type="text/javascript">moveProgressBar('77.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with a success status code (2xx)</span><span class='duration'>0.01934s</span></dd>
+    <script type="text/javascript">moveProgressBar('74.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :unauthorized (401)</span><span class='duration'>0.01341s</span></dd>
   </dl>
 </div>
 <div id="div_group_47" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_47" class="passed">GET #show</dt>
-    <script type="text/javascript">moveProgressBar('78.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns just one Unit</span><span class='duration'>0.01407s</span></dd>
-    <script type="text/javascript">moveProgressBar('79.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">JSON response contains all desired attributes</span><span class='duration'>0.01819s</span></dd>
-    <script type="text/javascript">moveProgressBar('80.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns http success</span><span class='duration'>0.01951s</span></dd>
+  <dt id="example_group_47" class="passed">DELETE #destroy</dt>
+    <script type="text/javascript">moveProgressBar('75.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01679s</span></dd>
+    <script type="text/javascript">moveProgressBar('76.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">removes the entry from the database</span><span class='duration'>0.01669s</span></dd>
   </dl>
 </div>
 <div id="div_group_48" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_48" class="passed">DELETE #destroy</dt>
-    <script type="text/javascript">moveProgressBar('81.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">removes the entry from the database</span><span class='duration'>0.01487s</span></dd>
-    <script type="text/javascript">moveProgressBar('82.2');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01364s</span></dd>
+  <dt id="example_group_48" class="passed">POST #create</dt>
   </dl>
 </div>
 <div id="div_group_49" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_49" class="passed">PUT #update</dt>
-    <script type="text/javascript">moveProgressBar('83.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01778s</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_49" class="passed">when unit has valid attributes</dt>
+    <script type="text/javascript">moveProgressBar('77.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :created (201)</span><span class='duration'>0.02315s</span></dd>
+    <script type="text/javascript">moveProgressBar('78.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">saves the unit to the database</span><span class='duration'>0.01730s</span></dd>
   </dl>
 </div>
 <div id="div_group_50" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_50" class="passed">POST #create</dt>
+  <dt id="example_group_50" class="passed">GET #index</dt>
+    <script type="text/javascript">moveProgressBar('79.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response contains the correct number of entries</span><span class='duration'>0.01952s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response body contains the expected attributes</span><span class='duration'>0.02069s</span></dd>
+    <script type="text/javascript">moveProgressBar('81.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with a success status code (2xx)</span><span class='duration'>0.02280s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.02061s</span></dd>
   </dl>
 </div>
 <div id="div_group_51" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_51" class="passed">when unit has valid attributes</dt>
-    <script type="text/javascript">moveProgressBar('84.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">saves the unit to the database</span><span class='duration'>0.01386s</span></dd>
-    <script type="text/javascript">moveProgressBar('85.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :created (201)</span><span class='duration'>0.01316s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_51" class="passed">GET #show with generated unit_hash</dt>
+    <script type="text/javascript">moveProgressBar('83.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns http success</span><span class='duration'>0.01400s</span></dd>
+    <script type="text/javascript">moveProgressBar('84.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">returns just one Unit</span><span class='duration'>0.01415s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">JSON response contains all desired attributes</span><span class='duration'>0.01418s</span></dd>
   </dl>
 </div>
 <div id="div_group_52" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_52" class="passed">UnitsController</dt>
-    <script type="text/javascript">moveProgressBar('86.4');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to have :set_unit as a before_action</span><span class='duration'>0.00200s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_52" class="passed">PUT #update</dt>
+    <script type="text/javascript">moveProgressBar('86.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to respond with status code :no_content (204)</span><span class='duration'>0.01805s</span></dd>
   </dl>
 </div>
 <div id="div_group_53" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_53" class="passed">PUT #update</dt>
-    <script type="text/javascript">moveProgressBar('87.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 500</span><span class='duration'>0.01584s</span></dd>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_53" class="passed">User</dt>
+    <script type="text/javascript">moveProgressBar('87.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">has valid factory</span><span class='duration'>0.00327s</span></dd>
   </dl>
 </div>
 <div id="div_group_54" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_54" class="passed">DELETE #destroy</dt>
+  <dt id="example_group_54" class="passed">validations</dt>
+    <script type="text/javascript">moveProgressBar('88.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :email cannot be empty/falsy</span><span class='duration'>0.00771s</span></dd>
+    <script type="text/javascript">moveProgressBar('89.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected not to allow :email to be ‹&quot;test.gmail.com&quot;›</span><span class='duration'>0.00358s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to allow :email to be ‹&quot;test@gmail.com&quot;›</span><span class='duration'>0.00311s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have a secure password, defined on password attribute</span><span class='duration'>0.00450s</span></dd>
+    <script type="text/javascript">moveProgressBar('92.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :email is unique</span><span class='duration'>0.00621s</span></dd>
   </dl>
 </div>
 <div id="div_group_55" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_55" class="passed">with invalid id</dt>
-    <script type="text/javascript">moveProgressBar('88.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00438s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_55" class="passed">associations</dt>
+    <script type="text/javascript">moveProgressBar('93.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to have many units</span><span class='duration'>0.00175s</span></dd>
   </dl>
 </div>
 <div id="div_group_56" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_56" class="passed">GET #show</dt>
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_56" class="passed">Ticket</dt>
   </dl>
 </div>
 <div id="div_group_57" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_57" class="passed">when id does exist</dt>
-    <script type="text/javascript">moveProgressBar('89.5');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00853s</span></dd>
-    <script type="text/javascript">moveProgressBar('90.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00868s</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_57" class="passed">relationship</dt>
+    <script type="text/javascript">moveProgressBar('94.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to belong to unit required: true</span><span class='duration'>0.01590s</span></dd>
   </dl>
 </div>
 <div id="div_group_58" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_58" class="passed">when id does not exist</dt>
-    <script type="text/javascript">moveProgressBar('91.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq {}</span><span class='duration'>0.00406s</span></dd>
-    <script type="text/javascript">moveProgressBar('92.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00374s</span></dd>
-    <script type="text/javascript">moveProgressBar('93.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 404</span><span class='duration'>0.00375s</span></dd>
-  </dl>
-</div>
-<div id="div_group_59" class="example_group passed">
   <dl style="margin-left: 15px;">
-  <dt id="example_group_59" class="passed">POST #create</dt>
-  </dl>
-</div>
-<div id="div_group_60" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_60" class="passed">when unit has invalid attributes</dt>
-    <script type="text/javascript">moveProgressBar('94.7');</script>
-    <dd class="example passed"><span class="passed_spec_name">errors contains the correct message</span><span class='duration'>0.00948s</span></dd>
-    <script type="text/javascript">moveProgressBar('95.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">returns the correct number of errors</span><span class='duration'>0.00889s</span></dd>
-    <script type="text/javascript">moveProgressBar('96.8');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 422</span><span class='duration'>0.00913s</span></dd>
-  </dl>
-</div>
-<div id="div_group_61" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_61" class="passed">GET #index</dt>
-  </dl>
-</div>
-<div id="div_group_62" class="example_group passed">
-  <dl style="margin-left: 30px;">
-  <dt id="example_group_62" class="passed">has no entries</dt>
+  <dt id="example_group_58" class="passed">validations</dt>
+    <script type="text/javascript">moveProgressBar('95.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :status cannot be empty/falsy</span><span class='duration'>0.00612s</span></dd>
+    <script type="text/javascript">moveProgressBar('96.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :unit_id cannot be empty/falsy</span><span class='duration'>0.00876s</span></dd>
     <script type="text/javascript">moveProgressBar('97.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq &quot;application/json; charset=utf-8&quot;</span><span class='duration'>0.00403s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">has valid factory</span><span class='duration'>0.00386s</span></dd>
     <script type="text/javascript">moveProgressBar('98.9');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to respond with 200</span><span class='duration'>0.00351s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :subject cannot be empty/falsy</span><span class='duration'>0.00707s</span></dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">is expected to eq {&quot;units&quot;=&gt;[]}</span><span class='duration'>0.00457s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">is expected to validate that :opened_by cannot be empty/falsy</span><span class='duration'>0.00695s</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.96360 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "96 examples, 10 failures, 1 pending";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>1.13098 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "99 examples, 0 failures, 1 pending";</script>
 </div>
 </div>
 </body>

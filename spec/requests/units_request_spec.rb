@@ -1,101 +1,102 @@
 require 'rails_helper'
 
-RSpec.describe 'Units', type: :request do
-  # describe 'GET #index' do
-  #   before(:each) do
-  #     @units = create_list(:unit, 2)
-  #     get '/units'
-  #   end
+RSpec.describe 'Units' do
+  num_of_units = 3
+  subject(:unit) { create(:unit, user: user) }
 
-  #   let(:json_response) { JSON.parse(response.body) }
+  let(:user) { create(:user) }
+  let(:unit_params) { attributes_for(:unit) }
+  let(:units) { create_list(:unit, num_of_units, user: user) }
+  let(:headers) { AuthenticationHelpers.auth_headers(user) }
+  let(:json_response) { JSON.parse(response.body) }
 
-  #   it { expect(response).to have_http_status(:success) }
-
-  #   it 'JSON response contains the correct number of entries' do
-  #     expect(json_response['units'].count).to eq(2)
-  #   end
-
-  #   it 'JSON response body contains the expected attributes' do
-  #     expect(json_response['units'][0]).to include({
-  #                                                    'name' => @units.first.name,
-  #                                                    'unit_type' => @units.first.unit_type,
-  #                                                    'unit_hash' => @units.first.unit_hash
-  #                                                  })
-  #   end
-  # end
-
-  describe 'GET #show' do
+  describe 'GET #index' do
     before(:each) do
-      unit = create(:unit)
-      get "/units/#{unit.unit_hash}", params: { id: unit.unit_hash }
+      units
+      get '/units', headers: headers
     end
 
-    let(:json_response) { JSON.parse(response.body) }
+    it { expect(response).to have_http_status(:success) }
+
+    it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+
+    it 'JSON response contains the correct number of entries' do
+      expect(json_response['count']).to eq(num_of_units)
+    end
+
+    it 'JSON response body contains the expected attributes' do
+      expect(json_response['units'][0]).to include({
+                                                     'name' => units[0]['name'],
+                                                     'unit_type' => units[0]['unit_type'],
+                                                     'unit_hash' => units[0]['unit_hash']
+                                                   })
+    end
+  end
+
+  describe 'GET #show with generated unit_hash' do
+    before(:each) do
+      get "/units/#{unit.unit_hash}"
+    end
 
     it 'returns http success' do
       expect(response).to have_http_status(:ok)
     end
 
-    # it 'returns just one Unit' do
-    #   expect(json_response['units'].count).to eq(1)
-    # end
+    it 'returns just one Unit' do
+      expect(json_response['count']).to eq(1)
+    end
 
     it 'JSON response contains all desired attributes' do
-      expect(json_response['units']).to include({ 'id' => Unit.last.id, 'name' => Unit.last.name,
-                                                  'user_id' => Unit.last.user_id,
-                                                  'unit_type' => Unit.last.unit_type })
+      expect(json_response['units']).to include({ 'id' => unit['id'],
+                                                  'name' => unit['name'],
+                                                  'user_id' => unit['user_id'],
+                                                  'unit_type' => unit['unit_type'] })
     end
   end
 
-  # describe 'POST #create' do
-  #   context 'when unit has valid attributes' do
-  #     before(:each) do
-  #       user = create(:user)
-  #       @unit_params = attributes_for(:unit)
-  #       post "users/#{user.id}/units", params: { unit: @unit_params }
-  #     end
+  describe 'POST #create' do
+    context 'when unit has valid attributes' do
+      before(:each) do
+        post "/users/#{user.id}/units", params: { unit: unit_params }, headers: headers
+      end
 
-  #     it { expect(response).to have_http_status(:created) }
+      it { expect(response).to have_http_status(:created) }
 
-  #     it 'saves the unit to the database' do
-  #       expect(user.units.last.name).to eq(@unit_params[:name])
-  #     end
-  #   end
-  # end
+      it 'saves the unit to the database' do
+        expect(user.units.last.name).to eq(unit_params[:name])
+      end
+    end
+  end
 
-  # describe 'PUT #update' do
-  #   before(:each) do
-  #     unit = create(:unit)
-  #     unit_params = attributes_for(:unit)
-  #     put "/units/#{unit.unit_hash}", params: { unit: unit_params }
-  #   end
+  describe 'PUT #update' do
+    before(:each) do
+      unit
+      put "/units/#{unit.unit_hash}", params: { unit: unit_params }, headers: headers
+    end
 
-  #   it { expect(response).to have_http_status(:no_content) }
-  # end
+    it { expect(response).to have_http_status(:no_content) }
+  end
 
   describe 'PATCH #update' do
     before(:each) do
-      unit = create(:unit)
-      unit_params = attributes_for(:unit)
+      unit
       patch "/units/#{unit.unit_hash}", params: { unit: unit_params }
     end
 
     it { expect(response).to have_http_status(:unauthorized) }
   end
 
-  # describe 'DELETE #destroy' do
-  #   let(:unit_count) { Unit.count }
+  describe 'DELETE #destroy' do
+    before(:each) do
+      unit
+      delete "/units/#{unit.unit_hash}", headers: headers
+      # /users/#{user['user_id']}
+    end
 
-  #   before(:each) do
-  #     unit = create(:unit)
-  #     authenticate_user
-  #     delete "/users/#{user.last.user_id}/units/#{unit.unit_hash}"
-  #   end
+    it { expect(response).to have_http_status(:no_content) }
 
-  #   it { expect(response).to have_http_status(:no_content) }
-
-  #   it 'removes the entry from the database' do
-  #     expect(unit_count).to eq(Unit.count)
-  #   end
-  # end
+    it 'removes the entry from the database' do
+      expect(Unit.count).to eq(0)
+    end
+  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TicketsController, type: :controller do
+RSpec.describe TicketsController do
   it { should use_before_action(:set_ticket) }
   it { should use_before_action(:set_unit) }
 

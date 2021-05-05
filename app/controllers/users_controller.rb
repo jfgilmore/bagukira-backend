@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: %i[update destroy] # index show
-  # before_action :set_user, only: %i[show update destroy]
+  before_action :authenticate_user, only: %i[index show update destroy]
+  before_action :set_user, only: %i[show update destroy]
 
   # Default ordered by email
-  # def index
-  #   users = User.order(email: :desc).all
-  #   render json: { users: users }, status: :ok
-  # end
+  def index
+    users = User.select(:email, :id).order(email: :desc).all
+    render json: { users: users }, status: :ok
+  end
 
-  # def show
-  #   render json: @user, status: :ok
-  # end
+  def show
+    render json: @user, status: :ok
+  end
 
   def create
     user = User.new(user_params)
@@ -32,8 +32,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    BaguMailMailer.with(user: current_user).user_destroyed_mail.deliver_now
-    render json: {}, status: :no_content if current_user.destroy
+    return unless @user.destroy
+
+    BaguMailMailer.with(user: @user).user_destroyed_mail.deliver_now
+    render json: {}, status: :no_content
   end
 
   private
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password)
   end
 
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

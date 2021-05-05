@@ -24,8 +24,8 @@ class BaguMailMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Your BaguKira user account has been updated')
   end
 
-  def user_destroyed_mail(_user)
-    @user = params[:user]
+  def user_destroyed_mail(user = :user)
+    @user = params[user]
     mail(to: @user.email, subject: 'Your BaguKira user account has been deleted')
   end
 end

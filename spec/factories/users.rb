@@ -4,6 +4,10 @@ FactoryBot.define do
     password { 'password' }
 
     trait :invalid do
+      email { 'testemail' }
+    end
+
+    trait :missing_email do
       email { nil }
     end
   end
