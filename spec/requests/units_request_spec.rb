@@ -68,6 +68,25 @@ RSpec.describe 'Units' do
         expect(user.units.last.name).to eq(unit_params[:name])
       end
     end
+
+    context 'when user sends invite emails' do
+      before do
+        unit
+        post "/users/#{user.id}/units/#{unit.id}/invite", params: { unit: { invite_list: ['test@email.com'] } },
+                                                          headers: headers
+      end
+
+      it { expect(response).to have_http_status(:no_content) }
+    end
+
+    context 'when user sends invite emails with no list' do
+      before do
+        unit
+        post "/users/#{user.id}/units/#{unit.id}/invite", params: { unit: {} }, headers: headers
+      end
+
+      it { expect(response).to have_http_status(:bad_request) }
+    end
   end
 
   describe 'PUT #update' do

@@ -54,8 +54,6 @@ RSpec.describe 'Users' do
 
   describe 'POST #create' do
     context 'when user has valid attributes' do
-      let(:user_params) { attributes_for(:user) }
-
       before do
         post '/users', params: { user: user_params }
       end
@@ -63,6 +61,16 @@ RSpec.describe 'Users' do
       it { expect(response).to have_http_status(:created) }
 
       it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+
+      it 'saves the user to the database' do
+        expect(User.last.email).to eq(user_params[:email])
+      end
+    end
+
+    context 'with sign-up route' do
+      before do
+        post '/sign-up', params: { user: user_params }
+      end
 
       it 'saves the user to the database' do
         expect(User.last.email).to eq(user_params[:email])

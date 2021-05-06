@@ -37,6 +37,29 @@ RSpec.describe 'Tickets' do
     end
   end
 
+  describe 'GET #show' do
+    before do
+      tickets
+      get "/units/#{unit.id}/tickets/#{ticket.ticket_num}"
+    end
+
+    it { expect(response).to have_http_status(:success) }
+
+    it { expect(response.content_type).to eq('application/json; charset=utf-8') }
+
+    it 'JSON response contains the correct number of entries' do
+      expect(json_response['count']).to eq(1)
+    end
+
+    it 'JSON response body contains the expected attributes' do
+      expect(json_response['tickets']).to include({ 'subject' => ticket['subject'],
+                                                    'status' => ticket['status'],
+                                                    'opened_by' => ticket['opened_by'],
+                                                    'description' => ticket['description'],
+                                                    'ticket_num' => ticket['ticket_num'] })
+    end
+  end
+
   describe 'POST #create' do
     context 'when ticket has valid attributes' do
       before do

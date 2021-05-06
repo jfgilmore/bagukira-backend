@@ -56,9 +56,9 @@ class UnitsController < ApplicationController
     @unit = Unit.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
 
   def project_hash(unit)
     # Get ticket postgres index
