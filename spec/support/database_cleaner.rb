@@ -3,10 +3,10 @@ RSpec.configure do |config|
   config.before(:suite) { DatabaseCleaner.clean_with(:truncation) }
 
   # The default recommended strategy to use
-  config.before(:each) { DatabaseCleaner.strategy = :transaction }
+  config.before { DatabaseCleaner.strategy = :transaction }
 
   # These two settings tell DatabaseCleaner to hook into the start and end of the tests.
-  config.before(:each) { DatabaseCleaner.start }
+  config.before { DatabaseCleaner.start }
 
-  config.after(:each) { DatabaseCleaner.clean }
+  config.after { DatabaseCleaner.clean }
 end

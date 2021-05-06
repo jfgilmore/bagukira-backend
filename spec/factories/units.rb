@@ -4,7 +4,7 @@ FactoryBot.define do
       "Project #{n}"
     end
     unit_type do
-      t = [:project, :team, :organisation]
+      t = %i[project team organisation]
       t[(rand(0...2))]
     end
     unit_hash

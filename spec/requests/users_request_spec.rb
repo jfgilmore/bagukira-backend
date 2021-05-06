@@ -7,10 +7,10 @@ RSpec.describe 'Users' do
   let(:json_response) { JSON.parse(response.body) }
 
   describe 'GET #index' do
-    num_of_users = 2
+    num_of_users = 3
     let(:users) { create_list(:user, num_of_users) }
 
-    before(:each) do
+    before do
       get '/users', headers: AuthenticationHelpers.auth_headers(users[0])
     end
 
@@ -31,7 +31,7 @@ RSpec.describe 'Users' do
   end
 
   describe 'GET #show' do
-    before(:each) do
+    before do
       get '/users', params: { id: user }, headers: headers
     end
 
@@ -54,7 +54,7 @@ RSpec.describe 'Users' do
     context 'when user has valid attributes' do
       let(:user_params) { attributes_for(:user) }
 
-      before(:each) do
+      before do
         post '/users', params: { user: user_params }
       end
 
@@ -69,7 +69,7 @@ RSpec.describe 'Users' do
   end
 
   describe 'PUT #update' do
-    before(:each) do
+    before do
       put "/users/#{user.id}", params: { user: user_params }, headers: headers
     end
 
@@ -81,7 +81,7 @@ RSpec.describe 'Users' do
   end
 
   describe 'PATCH #update' do
-    before(:each) do
+    before do
       patch "/users/#{user.id}", params: { user: user_params }, headers: headers
     end
 
@@ -91,7 +91,7 @@ RSpec.describe 'Users' do
   describe 'DELETE #destroy' do
     let(:user_count) { User.count }
 
-    before(:each) do
+    before do
       delete "/users/#{user.id}", headers: headers
     end
 

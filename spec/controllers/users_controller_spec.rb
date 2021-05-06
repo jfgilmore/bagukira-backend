@@ -10,7 +10,7 @@ RSpec.describe UsersController do
 
   describe 'GET #index' do
     context 'when has no entries' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         get :index
       end
@@ -21,7 +21,7 @@ RSpec.describe UsersController do
 
   describe 'GET #show' do
     context 'when id does exist' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         get :show, params: { id: user }
       end
@@ -32,7 +32,7 @@ RSpec.describe UsersController do
     end
 
     context 'when id does not exist' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         get :show, params: { id: wrong_user }
       end
@@ -43,7 +43,7 @@ RSpec.describe UsersController do
 
   describe 'POST #create' do
     context 'when user is missing email' do
-      before(:each) do
+      before do
         user_params = attributes_for(:user, :missing_email)
         post :create, params: { user: user_params }
       end
@@ -62,7 +62,7 @@ RSpec.describe UsersController do
 
   describe 'PUT #update' do
     context 'when user has valid attributes' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         put :update, params: { id: user, user: user_params }
       end
@@ -73,7 +73,7 @@ RSpec.describe UsersController do
     end
 
     context 'when user has invalid attributes' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         put :update, params: { user: invalid_params, id: user }
       end
@@ -92,7 +92,7 @@ RSpec.describe UsersController do
 
   describe 'DELETE #destroy' do
     context 'with a valid id' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         delete :destroy, params: { id: user }
       end
@@ -103,7 +103,7 @@ RSpec.describe UsersController do
     end
 
     context 'with an invalid id' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         delete :destroy, params: { id: wrong_user }
       end
