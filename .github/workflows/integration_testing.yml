@@ -7,9 +7,9 @@
 name: Verification
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   linters:
@@ -61,12 +61,12 @@ jobs:
       PGPASSWORD: postgres
     services:
       postgres:
-        image: postgres:12.3-alpine@sha256:7693f2082c681571d1dfa66d63f21689192c0c36108f4eb28be0aee0dc285921
+        image: postgres:13.2-alpine@sha256:5fd7fcd08db86f5b2aed28fcfaf9ae0aca8e9428561ac547764c2a2b0f41adfc
         env:
           POSTGRES_USER: bagukira_backend
           POSTGRES_PASSWORD: postgres
         ports:
-        - 5432:5432
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:

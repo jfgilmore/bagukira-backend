@@ -7,9 +7,9 @@
 name: Production Pre Flight Check
 on:
   push:
-    branches: [ production ]
+    branches: [production]
   pull_request:
-    branches: [ production ]
+    branches: [production]
 
 jobs:
   linters:
@@ -61,12 +61,12 @@ jobs:
       PGPASSWORD: postgres
     services:
       postgres:
-        image: postgres:12.3
+        image: postgres:13.2
         env:
           POSTGRES_USER: bagukira_backend
           POSTGRES_PASSWORD: postgres
         ports:
-        - 5432:5432
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
