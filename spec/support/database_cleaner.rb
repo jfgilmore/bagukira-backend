@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   # Clear the entire database is cleared before running any tests
   config.before(:suite) { DatabaseCleaner.clean_with(:truncation) }

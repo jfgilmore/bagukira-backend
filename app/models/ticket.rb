@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ticket < ApplicationRecord
   validates :subject, :status, :unit_id, :opened_by, presence: true
   validates :closed_by, presence: true, if: :status_closed?, on: :update

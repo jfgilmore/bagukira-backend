@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UnitsController < ApplicationController
   before_action :authenticate_user, only: %i[index invite create update destroy]
   before_action :set_unit, only: %i[show invite update destroy]
