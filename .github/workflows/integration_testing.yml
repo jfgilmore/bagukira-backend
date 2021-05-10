@@ -61,7 +61,7 @@ jobs:
       PGPASSWORD: postgres
     services:
       postgres:
-        image: postgres:13.2-alpine@sha256:5fd7fcd08db86f5b2aed28fcfaf9ae0aca8e9428561ac547764c2a2b0f41adfc
+        image: postgres:13.2-alpine@sha256:c4c7a1585974706b5f72b8ab595e47399b23b2e03d93bbf75c1b0904be1803dc
         env:
           POSTGRES_USER: bagukira_backend
           POSTGRES_PASSWORD: postgres
