@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UnitsController < ApplicationController
   before_action :authenticate_user, only: %i[index invite create update destroy]
   before_action :set_unit, only: %i[show invite update destroy]
@@ -54,9 +56,9 @@ class UnitsController < ApplicationController
     @unit = Unit.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
 
   def project_hash(unit)
     # Get ticket postgres index

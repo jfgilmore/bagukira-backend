@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Routing', type: :routing do
@@ -27,4 +29,11 @@ RSpec.describe 'Routing', type: :routing do
     it { should route(:patch, 'units/1/tickets/1').to(controller: :tickets, action: :update, unit_id: 1, id: 1) }
     it { should route(:delete, 'units/1/tickets/1').to(controller: :tickets, action: :destroy, unit_id: 1, id: 1) }
   end
+
+  # describe 'Other routes' do
+  # post 'login', to: 'user_token#create'
+  # get 'status', to: 'status#index'
+  # get 'status/user', to: 'status#user'
+  # post 'sign-up', to: 'users#create'
+  # end
 end

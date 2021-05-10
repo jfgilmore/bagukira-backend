@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Unit < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
   validates :user_id, :unit_type, presence: true

@@ -7,9 +7,9 @@
 name: Verification
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   linters:
@@ -27,19 +27,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-
-      - name: Ruby gem cache
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Install gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Run linters
         run: |
@@ -61,12 +49,12 @@ jobs:
       PGPASSWORD: postgres
     services:
       postgres:
-        image: postgres:12.3-alpine@sha256:7693f2082c681571d1dfa66d63f21689192c0c36108f4eb28be0aee0dc285921
+        image: postgres:13.2-alpine@sha256:c4c7a1585974706b5f72b8ab595e47399b23b2e03d93bbf75c1b0904be1803dc
         env:
           POSTGRES_USER: bagukira_backend
           POSTGRES_PASSWORD: postgres
         ports:
-        - 5432:5432
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
@@ -77,19 +65,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-
-      - name: Ruby gem cache
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Install gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Setup test database
         run: |

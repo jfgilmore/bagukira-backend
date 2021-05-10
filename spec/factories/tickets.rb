@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :ticket do
     sequence :subject do |n|
@@ -6,7 +8,8 @@ FactoryBot.define do
     status { 'OPEN' }
     opened_by { 'Josh' }
     description { 'Something to do with CI.' }
-    unit { Unit.first || association(:unit) }
+    unit
+    severity { 'MEDIUM' }
 
     trait :new_unit do
       unit { association(:unit) }

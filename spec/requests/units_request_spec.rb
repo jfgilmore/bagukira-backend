@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Units' do
@@ -11,7 +13,7 @@ RSpec.describe 'Units' do
   let(:json_response) { JSON.parse(response.body) }
 
   describe 'GET #index' do
-    before(:each) do
+    before do
       units
       get '/units', headers: headers
     end
@@ -34,7 +36,7 @@ RSpec.describe 'Units' do
   end
 
   describe 'GET #show with generated unit_hash' do
-    before(:each) do
+    before do
       get "/units/#{unit.unit_hash}"
     end
 
@@ -56,7 +58,7 @@ RSpec.describe 'Units' do
 
   describe 'POST #create' do
     context 'when unit has valid attributes' do
-      before(:each) do
+      before do
         post "/users/#{user.id}/units", params: { unit: unit_params }, headers: headers
       end
 
@@ -66,10 +68,29 @@ RSpec.describe 'Units' do
         expect(user.units.last.name).to eq(unit_params[:name])
       end
     end
+
+    context 'when user sends invite emails' do
+      before do
+        unit
+        post "/users/#{user.id}/units/#{unit.id}/invite", params: { unit: { invite_list: ['test@email.com'] } },
+                                                          headers: headers
+      end
+
+      it { expect(response).to have_http_status(:no_content) }
+    end
+
+    context 'when user sends invite emails with no list' do
+      before do
+        unit
+        post "/users/#{user.id}/units/#{unit.id}/invite", params: { unit: {} }, headers: headers
+      end
+
+      it { expect(response).to have_http_status(:bad_request) }
+    end
   end
 
   describe 'PUT #update' do
-    before(:each) do
+    before do
       unit
       put "/units/#{unit.unit_hash}", params: { unit: unit_params }, headers: headers
     end
@@ -78,16 +99,18 @@ RSpec.describe 'Units' do
   end
 
   describe 'PATCH #update' do
-    before(:each) do
-      unit
-      patch "/units/#{unit.unit_hash}", params: { unit: unit_params }
-    end
+    context 'when unauthorized' do
+      before do
+        unit
+        patch "/units/#{unit.unit_hash}", params: { unit: unit_params }
+      end
 
-    it { expect(response).to have_http_status(:unauthorized) }
+      it { expect(response).to have_http_status(:unauthorized) }
+    end
   end
 
   describe 'DELETE #destroy' do
-    before(:each) do
+    before do
       unit
       delete "/units/#{unit.unit_hash}", headers: headers
       # /users/#{user['user_id']}

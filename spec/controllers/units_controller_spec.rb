@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UnitsController do
@@ -9,9 +11,15 @@ RSpec.describe UnitsController do
 
   it { should use_before_action(:set_unit) }
 
+  # describe 'filter params' do
+  #   context 'with create' do
+  #     it { should permit(:name, :unit_hash, :user_id, :unit_type, :invite_list).for(:create) }
+  #   end
+  # end
+
   describe 'GET #index' do
     context 'when has no entries' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         get :index
       end
@@ -28,7 +36,7 @@ RSpec.describe UnitsController do
 
   describe 'GET #show' do
     context 'when id does exist' do
-      before(:each) do
+      before do
         get :show, params: { id: unit.unit_hash }
       end
 
@@ -36,7 +44,7 @@ RSpec.describe UnitsController do
     end
 
     context 'when id does not exist' do
-      before(:each) do
+      before do
         get :show, params: { id: -1 }
       end
 
@@ -47,7 +55,7 @@ RSpec.describe UnitsController do
 
   describe 'POST #create' do
     context 'when unit has invalid attributes' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         post :create, params: { unit: invalid_unit }
       end
@@ -65,7 +73,7 @@ RSpec.describe UnitsController do
   end
 
   describe 'PUT #update' do
-    before(:each) do
+    before do
       request.headers.merge! headers
       put :update, params: { unit: invalid_unit, id: unit.unit_hash }
     end
@@ -75,7 +83,7 @@ RSpec.describe UnitsController do
 
   describe 'DELETE #destroy' do
     context 'with invalid id' do
-      before(:each) do
+      before do
         request.headers.merge! headers
         wrong_unit = -1
         delete :destroy, params: { id: wrong_unit }

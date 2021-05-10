@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaguMailMailer < ApplicationMailer
   default from: 'admin@bagukira.com'
 
@@ -9,10 +11,10 @@ class BaguMailMailer < ApplicationMailer
     mail(to: @email, subject: 'Invitation to contribute')
   end
 
-  def user_mail
-    @user = params[:user]
-    mail(to: @user.email, subject: 'test')
-  end
+  # def user_mail
+  #   @user = params[:user]
+  #   mail(to: @user.email, subject: 'test')
+  # end
 
   def user_created_mail
     @user = params[:user]
