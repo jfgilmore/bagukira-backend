@@ -171,6 +171,8 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rbnacl (7.1.1)
+      ffi
     regexp_parser (2.1.1)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -259,6 +261,7 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   jbuilder (~> 2.7)
+  jwt (~> 2.2)
   knock!
   listen (~> 3.2)
   mailgun-ruby (~> 1.2)
@@ -266,6 +269,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.6)
+  rbnacl (~> 7.1)
   rspec-rails (~> 5.0)
   rubocop-performance
   rubocop-rails

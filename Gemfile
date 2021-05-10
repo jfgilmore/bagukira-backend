@@ -61,3 +61,7 @@ gem 'rubocop-rspec', require: false
 gem 'bundler-audit', '~> 0.7.0'
 
 gem 'mailgun-ruby', '~> 1.2'
+
+gem "rbnacl", "~> 7.1"
+
+gem "jwt", "~> 2.2"

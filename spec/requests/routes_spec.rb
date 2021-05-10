@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Routing', type: :routing do
+  describe 'User Token routes' do
+    it { should route(post: '/user_token').to(controller: :user_token, action: :encode_token) }
+  end
+
   describe 'User routes' do
     it { should route(:get, '/users').to(controller: :users, action: :index) }
     it { should route(:get, '/users/1').to(controller: :users, action: :show, id: 1) }
