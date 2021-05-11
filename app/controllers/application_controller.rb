@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::API
   # include Knock::Authenticable
+  before_action :authorized
 
   rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
   rescue_from ActiveRecord::DeleteRestrictionError, with: :handle_cant_destroy_dependents
@@ -10,38 +11,56 @@ class ApplicationController < ActionController::API
   # rescue_from StandardError, with: :handle_uncaught_error
 
   # Valid 4hrs: change in config/initializers/knock.rb .token_lifetime
-  # def new_jwt
-  #   Knock::AuthToken.new(payload: { sub: current_user.id }).token
-  # end
+  def new_jwt
+    encode_token(payload: { sub: current_user.id }).token
+  end
 
-  # def render(options = nil, extra_options = {}, &block)
-  #   options ||= {}
-  #   # User logged in? Send a new JWT with JSON response.
-  #   options[:json][:jwt] = new_jwt if json_response?(options) && logged_in?
-  #   # Unauthorised then
-  #   super(options, extra_options, &block)
-  # end
+  def render(options = nil, extra_options = {}, &block)
+    options ||= {}
+    # User logged in? Send a new JWT with JSON response.
+    options[:json][:jwt] = new_jwt if json_response?(options) && logged_in?
+    # Unauthorised then
+    super(options, extra_options, &block)
+  end
 
-  # start
+  # starts -----------------------------------------------
+
+  def encode_token(payload)
+    private_key = RbNaCl::SimpleBox
+    @public_key = private_key.verify_key
+    JWT.encode payload, private_key, 'ED25519'
+  end
+
+  def auth_header
+    # { Authorization: 'Bearer <token>' }
+    request.headers['Authorization']
+  end
 
   def authorized
-    logged_in?
+    render json: {}, status: :unauthorized unless logged_in?
   end
 
   def current_user
-    Users.find decoded_token['user_id']
+    user_id = decoded_token[0]['user_id']
+    @user = User.find_by(id: user_id)
+  end
+
+  def decoded_token
+    if auth_header
+      token_from_request_headers
+    else
+      begin
+        JWT.decode token, @public_key, true, algorithm: 'ED25519'
+      rescue JWT::DecodeError
+        nil
+      end
+    end
   end
 
   private
 
-  def encode_token(payload)
-    JWT.encode payload, Rails.application.credentials.secret_key_base
-  end
-
-  def decoded_token
-    # call auth_header
-    JWT.decode token, Rails.application.credentials.secret_key_base, true, 'HS256'
-    # returns an Array [user_id]
+  def logged_in?
+    !!current_user
   end
 
   def token
@@ -49,19 +68,13 @@ class ApplicationController < ActionController::API
   end
 
   def token_from_request_headers
-    # returns token from Authorization: "Bearer #{token}"
-    # authorization.split(' ')[1]
-    request.headers['Authorization']&.split&.last
+    auth_header.split(' ')[1]
   end
 
-  # end
+  # ends -------------------------------------------------
 
   def json_response?(options)
     options[:json].is_a?(Hash)
-  end
-
-  def logged_in?
-    current_user.present?
   end
 
   def handle_not_found
